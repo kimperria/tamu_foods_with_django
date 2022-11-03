@@ -1,9 +1,77 @@
 <html>
+    <head>
+        {% extends 'tamueats/base.html'%}
+        {% load static %}
+        {% load bootstrap4 %}
+
+        {% block styles %}
+        {% bootstrap_css %}
+        <link rel="stylesheet" type="text/css" href="{% static '/styles/base.css' %}">
+        <!-- /home/kim/jenga_school/projects/sprint_2/tamu_foods_with_django/static/styles/base.css -->
+        {% endblock %}
+    </head>
     <body>
-        {% if name %}
-        <h1>Welcome to {{ name }} Homepage</h1>
-        {% else %}
-        <h1>Welcome to the HomePage</h1>
-        {% endif %}
+        {% block content %}
+            <section class="hero_section">
+                <div class="row">
+                    <div class="col-sm-4 col-md-8 col-lg-8">
+                        <h1>Order your <br>
+                            Favourite foods online.</h1>
+                        <h4>Fast delivery and easy pickups</h4>
+                        <p>Tamu foods and menu offers you a wide variety of food item at affordable prices.</p>
+                    </div>
+
+                    <div class="col-sm-4 col-md-4 col-lg-4">
+                        <div class="hero__section-principles">
+                            <h3>Fast deliveries</h3>
+                            <p>We promise to deliver in prompt time.</p>
+                        </div>
+
+                        <div class="hero__section-principles">
+                            <h3>Variety</h3>
+                            <p>Explore our wide range of delicious and healthy food items.</p>
+                        </div>
+
+                        <div class='hero__section-principles'>
+                            <h3>Easy pickup</h3>
+                            <p>Simple, reliable and convinient to your door step.</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section class="about__us">
+                <div class="d-flex justify-content-between">
+                    <div class="card mt-2" style="width: 18rem;">
+                        <div class="card-body">
+                          <h5 class="card-title">Easy To Order</h5>
+                          <h6 class="card-subtitle mb-2 text-muted">Like 1, 2, 3.</h6>
+                          <p class="card-text">Wherever you are around the city. We are reachable at the comfort of your device.</p>
+                        </div>
+                    </div>
+
+                    <div class="card mt-2" style="width: 18rem;">
+                        <div class="card-body">
+                          <h5 class="card-title">Prompt Delivery</h5>
+                          <h6 class="card-subtitle mb-2 text-muted">Pay and relax.</h6>
+                          <p class="card-text">Place your orders online and get it delivered for free within the city.</p>
+                        </div>
+                    </div>
+
+                    <div class="card mt-2" style="width: 18rem;">
+                        <div class="card-body">
+                          <h5 class="card-title">Unbeatable prices</h5>
+                          <h6 class="card-subtitle mb-2 text-muted">Quality and price guarantee.</h6>
+                          <p class="card-text">Get the best and nutricious meal packs at any time of day.</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+
+            <div class="section">
+                {% include "tamueats/footer.html" %}
+            </div>
+        {% endblock %}
     </body>
 </html>

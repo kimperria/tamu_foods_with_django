@@ -46,6 +46,9 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
 
     'tamueats.apps.TamueatsConfig',
+    'tags.apps.TagsConfig',
+    'likes.apps.LikesConfig',
+
 
     'debug_toolbar',
     'bootstrap4',

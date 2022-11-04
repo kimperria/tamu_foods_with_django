@@ -6,13 +6,12 @@
 
         {% block styles %}
         {% bootstrap_css %}
-        <link rel="stylesheet" type="text/css" href="{% static '/styles/base.css' %}">
-        <!-- /home/kim/jenga_school/projects/sprint_2/tamu_foods_with_django/static/styles/base.css -->
+        <link rel="stylesheet" type="text/css" href="{% static '/css/base.css' %}">
         {% endblock %}
     </head>
     <body>
         {% block content %}
-            <section class="hero_section">
+            <section class="hero_section section">
                 <div class="row">
                     <div class="col-sm-4 col-md-8 col-lg-8">
                         <h1>Order your <br>
@@ -40,7 +39,7 @@
                 </div>
             </section>
 
-            <section class="about__us">
+            <section class="about__us section">
                 <div class="d-flex justify-content-between">
                     <div class="card mt-2" style="width: 18rem;">
                         <div class="card-body">

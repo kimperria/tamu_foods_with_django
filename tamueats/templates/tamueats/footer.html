@@ -1,84 +1,93 @@
-<footer>
-    <section class="company__information">
-        <div class="row">
-            <div class="col-sm-12 col-md-4 col-lg-4">
-                <div class="contact__information">
-                    <h4>Tamu Foods</h4>
-                    <p>123-000100</p>
-                    <p>Nairobi, Kenya</p>
-                    <p>Follow us on socials</p>
+{% load static %}
+
+<html>
+    <head>
+        {% block styles %}
+            <link rel="stylesheet" href="style.css">
+        {% endblock %}
+    </head>
+    <body>
+        <footer>
+            <section class="company__information section">
+                <div class="row">
+                    <div class="col-sm-12 col-md-4 col-lg-4">
+                        <div class="contact__information">
+                            <h4>Tamu Foods</h4>
+                            <p>123-000100</p>
+                            <p>Nairobi, Kenya</p>
+                            <p>Follow us on socials</p>
+                        </div>
+                    </div>
+        
+                    <div class="col-sm-12 col-md-4 col-lg-4 additional__links">
+                        <div class='d-flex justify-content-between'>
+                            <div class="company__links">
+                                <ul class="navbar-nav">
+                                    <li class="nav-item">
+                                        <a class="nav-link" href="#">Menu</a>
+                                    </li>
+        
+                                    <li class="nav-item">
+                                        <a class="nav-link" href="#">Restaurants</a>
+                                    </li>
+        
+                                    <li class="nav-item">
+                                        <a class="nav-link" href="#">Management</a>
+                                    </li>
+                                </ul>
+                            </div>
+        
+                            <div class="company__links">
+                                <ul class="navbar-nav">
+                                    <li class="nav-item">
+                                        <a class="nav-link" href="#">Promotions</a>
+                                    </li>
+        
+                                    <li class="nav-item">
+                                        <a class="nav-link" href="#">Careers</a>
+                                    </li>
+        
+                                    <li class="nav-item">
+                                        <a class="nav-link" href="#">Press and documentation</a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+        
+                    <div class="col-sm-12 col-md-4 col-lg-4 news__letter">
+                        <h6>Call us: +(254) 0705651500</h6>
+                        <form class="news__letter-subcribeForm" style="display: flex;">
+                            <input type="text" placeholder="Subscribe to our news letter">
+                            <button style="padding: 0.45rem 1rem; margin-left: 0.35rem;">Subscribe</button>  
+                        </form>
+                    </div>
                 </div>
-            </div>
-
-            <div class="col-sm-12 col-md-4 col-lg-4 additional__links">
-                <div class='d-flex justify-content-between'>
-                    <div class="company__links">
-                        <ul class="navbar-nav">
+            </section>
+        
+            <section class="developer__section">
+                <div class="d-flex justify-content-around">
+                    <div class="footer__copy">
+                        <ul class="nav justify-content-around">
                             <li class="nav-item">
-                                <a class="nav-link" href="#">Menu</a>
+                                <a class="nav-link" href="#">Twitter</a>
                             </li>
-
+        
                             <li class="nav-item">
-                                <a class="nav-link" href="#">Restaurants</a>
-                            </li>
-
-                            <li class="nav-item">
-                                <a class="nav-link" href="#">Management</a>
+                                <a class="nav-link" href="#">Porfolio</a>
                             </li>
                         </ul>
                     </div>
-
-                    <div class="company__links">
-                        <ul class="navbar-nav">
-                            <li class="nav-item">
-                                <a class="nav-link" href="#">Promotions</a>
-                            </li>
-
-                            <li class="nav-item">
-                                <a class="nav-link" href="#">Careers</a>
-                            </li>
-
-                            <li class="nav-item">
-                                <a class="nav-link" href="#">Press and documentation</a>
-                            </li>
-                        </ul>
+        
+                    <div class="footer__author-info" style="padding: 0.3rem;">
+                        <span>&#169; Site designed and developed by Kimperria</span>
+                    </div>
+        
+                    <div class="footer__additionals" style="padding: 0.3rem;">
+                        Version 1.0.0-2022
                     </div>
                 </div>
-            </div>
-
-            <div class="col-sm-12 col-md-4 col-lg-4 news__letter">
-                <h6>Call us: +(254) 0705651500</h6>
-                <form class="news__letter-subcribeForm">
-                    <div class="row">
-                        <input type="text" placeholder="Subscribe to our news letter">
-                        <button class="btn">Subscribe</button>
-                    </div>   
-                </form>
-            </div>
-        </div>
-    </section>
-
-    <section class="developer__section">
-        <div class="d-flex justify-content-around">
-            <div class="footer__copy d-flex justify-content-between">
-                <ul>
-                    <li class="nav-item">
-                        <a href="#">Twitter</a>
-                    </li>
-
-                    <li class="nav-item">
-                        <a href="#">Porfolio</a>
-                    </li>
-                </ul>
-            </div>
-
-            <div class="footer__author-info">
-                <span>&#169; Site designed and developed by Kimperria</span>
-            </div>
-
-            <div class="footer__additionals">
-                Version 1.0.0-2022
-            </div>
-        </div>
-    </section>
-</footer>
+            </section>
+        </footer>
+    </body>
+</html>

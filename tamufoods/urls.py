@@ -17,6 +17,10 @@ from django.contrib import admin
 from django.urls import path, include
 import debug_toolbar
 
+# Custom page infomation
+admin.site.site_header = 'TamuFOODS SuperAdmin'
+admin.site.index_title= 'SuperUser Interface: Created by Kimperria'
+
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('tamufoods/', include('tamueats.urls')),

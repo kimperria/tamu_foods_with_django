@@ -103,6 +103,15 @@ class CustomerAdmin(admin.ModelAdmin):
 
 
 
+class OrderItemInline(admin.TabularInline):
+    '''
+    Manages food order to be processed
+    '''
+    autocomplete_fields = ['food_product']
+    # prepopulated_fields = {
+    #     'unit_price': ['unit_price']}
+    model = models.FoodOrderItem
+    extra = 0
 
 @admin.register(models.FoodOrder)
 class FoodOrderAdmin(admin.ModelAdmin):
@@ -110,6 +119,7 @@ class FoodOrderAdmin(admin.ModelAdmin):
     Admin class for orders
         methods: display, editable
     '''
-    autocomplete_fields = ['customer', 'product']
+    autocomplete_fields = ['customer']
+    inlines = [OrderItemInline]
     list_display = ['id', 'placed_at', 'customer','payment_status', 'delivery_status']
     list_editable = ['payment_status', 'delivery_status']

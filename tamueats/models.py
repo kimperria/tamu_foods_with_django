@@ -99,7 +99,10 @@ class FoodOrder(models.Model):
         null=True
     )
     customer = models.ForeignKey(Customer, on_delete=models.PROTECT)
-    product = models.ForeignKey(FoodProduct, on_delete=models.PROTECT)
+    # product = models.ForeignKey(FoodProduct, on_delete=models.PROTECT)
+
+    def __str__(self):
+        return f' {self.customer} Order'
 
 class FoodOrderItem(models.Model):
     '''
@@ -107,7 +110,9 @@ class FoodOrderItem(models.Model):
     '''
     food_order = models.ForeignKey(FoodOrder, on_delete = models.PROTECT)
     food_product = models.ForeignKey(FoodProduct, on_delete = models.PROTECT)
-    quantity = models.PositiveSmallIntegerField()
+    quantity = models.PositiveSmallIntegerField(
+        validators = [MinValueValidator(1)]
+    )
     unit_price = models.DecimalField(max_digits=6, decimal_places=2)
 
 

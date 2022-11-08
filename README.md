@@ -1,7 +1,8 @@
 # TAMU FOODS
 ---
 This is an e-Commerce food delivery web-based application that enables users to order food online from our partner range of restaurants and individual vendors.
-A sequel and beta version [Tamu-Foods-With-Flask](https://github.com/John-Kimani/Tamu-Foods-BackEnd.git) of that I had made with Flask.
+
+A sequel and beta version of [Tamu-Foods](https://github.com/John-Kimani/Tamu-Foods-BackEnd.git) that I had earlier made with the Flask framework.
 
 ## Table of contents
 1. [Overview](#project-overview)
@@ -21,13 +22,23 @@ A sequel and beta version [Tamu-Foods-With-Flask](https://github.com/John-Kimani
 ---
 ### Project illustations
 ---
-Database schema flow chart click here to view.
-UI/UX prototype click here to view.
-Project Management click here to view.
+
+<table>
+    <tr>
+        <th>UI UX Prototype</th>
+        <th>DATABASE</th>
+    </tr>
+    <tr>
+        <td>Click link to view wireframe and design concept on <a href="https://www.figma.com/file/YpZpvOnzbIiJ9zGNQ7l1Ta/Tamu-Foods-with-Django?node-id=0%3A1">Figma</a></td>
+        <td>Click link to view schema on <a href="https://miro.com/app/board/uXjVPHwAag8=/?share_link_id=965173040672">Miro </a> </td>
+    </tr>
+
+</table>
 
 ## Setup
 ### Dependacies
 - Python 3.6 +
+- PostgreSQL
 - IDE of choice.
 - More listed on requirements.txt
 #### How to install this project:
@@ -51,14 +62,15 @@ Project Management click here to view.
 
 
 ### Environment variables
-    - SECRET_KEY='you-will-never-guess'
+###### Set and configure your development variables.
+    - SECRET_KEY='django-secret-key' or 'you-will-never-guess'
     - MODE='dev'
     - DEBUG=True
-    - DB_NAME='blackpanther22
-    - DB_USER='user'
-    - DB_PASSWORD=Null
-    - DB_HOST=all
-    - ALLOWED_HOSTS=all
+    - DB_NAME='blackpanther22'
+    - DB_USER='postgres user' or 'allowed psql user'
+    - DB_PASSWORD='you-will-never-guess' or Null
+    - DB_HOST=provide for all or default
+    - ALLOWED_HOSTS=provide for localhost
     - CLOUDINARY_CLOUD_NAME='your cloudinary username'
     - CLOUDINARY_API_KEY='your cloudinary api'
     - CLOUDINARY_API_SECRET='your cloudinary secret key'

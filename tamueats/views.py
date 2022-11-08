@@ -15,3 +15,9 @@ def menu_page(request):
     # customers = Customer.objects.all()
     food_querry_set = FoodProduct.objects.all()
     return render(request, "tamueats/menu.html", {"menu":food_querry_set})
+
+def coming_soon(request):
+    '''
+    View function to render coming soon page
+    '''
+    return render(request, 'tamueats/comingsoon.html')

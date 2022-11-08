@@ -1,0 +1,26 @@
+<html>
+    <head>
+        {% extends 'tamueats/base.html'%}
+        {% load static %}
+        {% load bootstrap4 %}
+
+        {% block styles %}
+        {% bootstrap_css %}
+        <link rel="stylesheet" type="text/css" href="{% static '/css/base.css' %}">
+        {% endblock %}
+    </head>
+    <body>
+        {% block content %}
+            <section class="section">
+                <div class="coming__soon text-center">
+                    <h1>Coming Soon</h1>
+                    <p>Page is currently under construction</p>
+                </div>
+            </section>
+
+            <div class="section">
+                {% include "tamueats/footer.html" %}
+            </div>
+        {% endblock %}
+    </body>
+</html>

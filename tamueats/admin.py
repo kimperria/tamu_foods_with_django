@@ -1,4 +1,5 @@
 from django.contrib import admin
+from django.db.models.aggregates import Count
 from . import models
 
 @admin.register(models.FoodProduct)
@@ -25,7 +26,22 @@ class FoodProductAdmin(admin.ModelAdmin):
 class FoodProductCategoryAdmin(admin.ModelAdmin):
     '''
         Admin class for category
+
+        args:
+            Compute the amount of food products in a particular category
+            defines a function that takes in the category to create a new attribute
+            annotate the value from the query set method to the attribute function
     '''
+    list_display = ['title', 'category_count']
+
+    @admin.display(ordering='product_category_count')
+    def category_count(self, foodProductCategory):
+        return foodProductCategory.product_category_count
+
+    def get_queryset(self, request):
+        return super().get_queryset(request).annotate(
+            product_category_count = Count('foodproduct')
+        )
 
 
 
@@ -38,6 +54,8 @@ class CustomerAdmin(admin.ModelAdmin):
     list_display = ['first_name', 'last_name', 'username','email_address', 'phone_number', 'registration_date']
     list_per_page = 10
     ordering = ['first_name', 'last_name']
+
+
 
 
 @admin.register(models.FoodOrder)

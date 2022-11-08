@@ -1,9 +1,33 @@
 from django.contrib import admin
 from django.db.models.aggregates import Count
+from django.db.models.query import QuerySet
 from django.utils.html import format_html,  urlencode
 from django.urls import reverse
 from . import models
 
+
+
+class QuantityFilter(admin.SimpleListFilter):
+    '''
+    Class that handle filtering food items by quantity in store
+    '''
+    title = 'quantity'
+    parameter_name = 'quantityInStore'
+
+    def lookups(self, request, model_admin):
+        '''
+            Return a list of tuples containing logic to implement
+        '''
+        return [
+            ('<10', 'Low')
+        ]
+
+    def queryset(self, request, queryset: QuerySet):
+        '''
+            Returns filtering logic    
+        '''
+        if self.value() == '<10':
+            return queryset.filter(inventory=10)
 @admin.register(models.FoodProduct)
 class FoodProductAdmin(admin.ModelAdmin):
     '''
@@ -12,6 +36,7 @@ class FoodProductAdmin(admin.ModelAdmin):
     list_display = ['food_name', 'food_unit_price', 'inventory_status', 'food_category_title']
     list_editable = ['food_unit_price']
     list_per_page = 10
+    list_filter = ['food_category', QuantityFilter,'last_update']
     list_select_related = ['food_category']
 
     def food_category_title(self, foodProduct):
@@ -19,7 +44,7 @@ class FoodProductAdmin(admin.ModelAdmin):
 
     @admin.display(ordering='inventory')
     def inventory_status(self, foodProduct):
-        if foodProduct.inventory < 10:
+        if foodProduct.inventory <= 10:
             return 'Low'
         return 'OK'
 

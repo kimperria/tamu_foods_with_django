@@ -1,3 +1,4 @@
+from django.core.validators import MinValueValidator
 from django.db import models
 
 class Discounts(models.Model):
@@ -30,11 +31,16 @@ class FoodProduct(models.Model):
     '''
     food_name = models.CharField(max_length=255)
     food_description = models.TextField()
-    food_unit_price = models.DecimalField(max_digits=6, decimal_places=2)
-    inventory = models.IntegerField()
+    food_unit_price = models.DecimalField(
+        max_digits=6, 
+        decimal_places=2,
+        validators=[MinValueValidator(1)])
+    inventory = models.IntegerField(
+        validators=[MinValueValidator(1)]
+    )
     last_update = models.DateTimeField(auto_now=True)
     food_category = models.ForeignKey(FoodProductCategory, on_delete=models.PROTECT)
-    promotions = models.ManyToManyField(Discounts)
+    promotions = models.ManyToManyField(Discounts, blank=True)
 
     def __str__(self):
         return self.food_name

@@ -1,5 +1,7 @@
 from django.contrib import admin
 from django.db.models.aggregates import Count
+from django.utils.html import format_html,  urlencode
+from django.urls import reverse
 from . import models
 
 @admin.register(models.FoodProduct)
@@ -36,7 +38,21 @@ class FoodProductCategoryAdmin(admin.ModelAdmin):
 
     @admin.display(ordering='product_category_count')
     def category_count(self, foodProductCategory):
-        return foodProductCategory.product_category_count
+        '''
+         Redirect user to food item page
+         '''
+         #reverse method syntax admin:appname_url_view
+         ## Define the dynamic url then append food product id
+         ### Import urlencode utility to access category id 
+         ### return an object with key name as url to search and value as a string of querried instance id
+         #### Key value is class attribute with double underscore
+        url = (
+            reverse('admin:tamueats_foodproduct_changelist') 
+            + '?' 
+            + urlencode({
+                "food_category__id" : str(foodProductCategory.id)
+            }))
+        return format_html('<a href="{}">{}</a>', url, foodProductCategory.product_category_count)
 
     def get_queryset(self, request):
         return super().get_queryset(request).annotate(

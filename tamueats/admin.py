@@ -6,9 +6,13 @@ class FoodProductAdmin(admin.ModelAdmin):
     '''
         Admin class for foodProduct class
     '''
-    list_display = ['food_name', 'food_unit_price', 'inventory_status']
+    list_display = ['food_name', 'food_unit_price', 'inventory_status', 'food_category_title']
     list_editable = ['food_unit_price']
     list_per_page = 10
+    list_select_related = ['food_category']
+
+    def food_category_title(self, foodProduct):
+        return foodProduct.food_category.title
 
     @admin.display(ordering='inventory')
     def inventory_status(self, foodProduct):

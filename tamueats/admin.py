@@ -6,11 +6,15 @@ class FoodProductAdmin(admin.ModelAdmin):
     '''
         Admin class for foodProduct class
     '''
-    list_display = ['food_name', 'food_unit_price']
+    list_display = ['food_name', 'food_unit_price', 'inventory_status']
     list_editable = ['food_unit_price']
     list_per_page = 10
 
-    
+    @admin.display(ordering='inventory')
+    def inventory_status(self, foodProduct):
+        if foodProduct.inventory < 10:
+            return 'Low'
+        return 'OK'
 
 
 @admin.register(models.FoodProductCategory)

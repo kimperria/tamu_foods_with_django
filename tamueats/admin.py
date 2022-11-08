@@ -66,10 +66,12 @@ class FoodProductCategoryAdmin(admin.ModelAdmin):
 class CustomerAdmin(admin.ModelAdmin):
     '''
     Admin class for customer 
+        search fields allow case sensitive search of character
     '''
     list_display = ['first_name', 'last_name', 'username','email_address', 'phone_number', 'registration_date']
     list_per_page = 10
     ordering = ['first_name', 'last_name']
+    search_fields = ['first_name__istartswith', 'last_name__istartswith']
 
 
 

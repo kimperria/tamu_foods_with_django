@@ -142,6 +142,11 @@
   display: inline-flex;
 }
 
+.grid {
+  display: grid;
+  gap: 1.5rem;
+}
+
 /*=============== BREAKPOINTS ===============*/
 /* For large devices */
 @media screen and (max-width: 992px) {

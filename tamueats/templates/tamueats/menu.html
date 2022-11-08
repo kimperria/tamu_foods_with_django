@@ -1,0 +1,38 @@
+<html>
+    <head>
+        {% extends 'tamueats/base.html'%}
+        {% load static %}
+        {% load bootstrap4 %}
+
+        {% block styles %}
+        {% bootstrap_css %}
+        <link rel="stylesheet" type="text/css" href="{% static '/css/base.css' %}">
+        <link rel="stylesheet" type="text/css" href="{% static '/css/menu.css' %}">
+        {% endblock %}
+    </head>
+    <body>
+        {% block content %}
+            <section class="section">
+                {% for item in menu %}
+                <div class="menu card">
+                    <!-- <img src="..." class="card-img-top" alt="..."> -->
+                    <div class="card-body">
+                      <h5 class="card-title text-center">{{ item.food_name }}</h5>
+                      <p class="card-text">{{ item.food_description}}</p>
+                      <div class="card__action">
+                        <p><strong>In Store: </strong>{{item.inventory}}</p>
+                        <button class="add__to__cart-btn">Add to cart</button>
+                      </div>
+                      <p>Made with love from : RACHAEL'S KITCHEN</p>
+                    </div>
+                  </div>
+                {% endfor %}
+
+            </section>
+
+            <div class="section">
+                {% include "tamueats/footer.html" %}
+            </div>
+        {% endblock %}
+    </body>
+</html>

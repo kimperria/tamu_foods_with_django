@@ -38,3 +38,13 @@ class CustomerAdmin(admin.ModelAdmin):
     list_display = ['first_name', 'last_name', 'username','email_address', 'phone_number', 'registration_date']
     list_per_page = 10
     ordering = ['first_name', 'last_name']
+
+
+@admin.register(models.FoodOrder)
+class FoodOrderAdmin(admin.ModelAdmin):
+    '''
+    Admin class for orders
+        methods: display, editable
+    '''
+    list_display = ['id', 'placed_at', 'customer','payment_status', 'delivery_status']
+    list_editable = ['payment_status', 'delivery_status']

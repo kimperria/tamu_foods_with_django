@@ -1,9 +1,11 @@
 from django.contrib import admin
+from django.contrib.contenttypes.admin import GenericTabularInline
 from django.db.models.aggregates import Count
 from django.db.models.query import QuerySet
 from django.utils.html import format_html,  urlencode
 from django.urls import reverse
 from . import models
+from tags.models import TaggedItem
 
 
 
@@ -28,11 +30,20 @@ class QuantityFilter(admin.SimpleListFilter):
         '''
         if self.value() == '<10':
             return queryset.filter(inventory=10)
+
+
+class TagInline(GenericTabularInline):
+    '''
+    '''
+    autocomplete_fields = ['tag']
+    model = TaggedItem
+    extra = 1
 @admin.register(models.FoodProduct)
 class FoodProductAdmin(admin.ModelAdmin):
     '''
         Admin class for foodProduct class
     '''
+    inlines = [TagInline]
     autocomplete_fields = ['food_category']
     list_display = ['food_name', 'food_unit_price', 'inventory_status', 'food_category_title']
     list_editable = ['food_unit_price']

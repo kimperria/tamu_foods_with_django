@@ -15,6 +15,14 @@ class FoodProductCategory(models.Model):
     title = models.CharField(max_length=255)
     featured_product = models.ForeignKey('FoodProduct', on_delete=models.SET_NULL, null=True, related_name='+')
 
+    def __str__(self):
+        return self.title
+
+
+    class Meta:
+        ordering = ['title']
+
+
 
 class FoodProduct(models.Model):
     '''
@@ -28,6 +36,9 @@ class FoodProduct(models.Model):
     food_category = models.ForeignKey(FoodProductCategory, on_delete=models.PROTECT)
     promotions = models.ManyToManyField(Discounts)
 
+    def __str__(self):
+        return self.food_name
+
 
 class Customer(models.Model):
     '''
@@ -40,6 +51,11 @@ class Customer(models.Model):
     phone_number = models.CharField(max_length=255)
     registration_date = models.DateTimeField(auto_now_add=True)
 
+    def __str__(self):
+        return f' {self.first_name} {self.last_name}'
+
+    class Meta:
+        ordering = ['first_name', 'last_name']
 
 class FoodOrder(models.Model):
     '''

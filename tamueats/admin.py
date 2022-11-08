@@ -33,11 +33,13 @@ class FoodProductAdmin(admin.ModelAdmin):
     '''
         Admin class for foodProduct class
     '''
+    autocomplete_fields = ['food_category']
     list_display = ['food_name', 'food_unit_price', 'inventory_status', 'food_category_title']
     list_editable = ['food_unit_price']
     list_per_page = 10
     list_filter = ['food_category', QuantityFilter,'last_update']
     list_select_related = ['food_category']
+    search_fields = ['food_name']
 
     def food_category_title(self, foodProduct):
         return foodProduct.food_category.title
@@ -60,6 +62,7 @@ class FoodProductCategoryAdmin(admin.ModelAdmin):
             annotate the value from the query set method to the attribute function
     '''
     list_display = ['title', 'category_count']
+    search_fields = ['title']
 
     @admin.display(ordering='product_category_count')
     def category_count(self, foodProductCategory):
@@ -107,5 +110,6 @@ class FoodOrderAdmin(admin.ModelAdmin):
     Admin class for orders
         methods: display, editable
     '''
+    autocomplete_fields = ['customer', 'product']
     list_display = ['id', 'placed_at', 'customer','payment_status', 'delivery_status']
     list_editable = ['payment_status', 'delivery_status']

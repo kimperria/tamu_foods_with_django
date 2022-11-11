@@ -46,7 +46,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
 
     'tamueats.apps.TamueatsConfig',
-    'customapp.apps.CustomappConfig',
+    'core.apps.CoreConfig',
     'tags.apps.TagsConfig',
     'likes.apps.LikesConfig',
 
@@ -161,5 +161,7 @@ INTERNAL_IPS = [
     "127.0.0.1",
     # ...
 ]
+
+AUTH_USER_MODEL = 'core.user'
 
 CRISPY_TEMPLATE_PACK = 'bootstrap4'

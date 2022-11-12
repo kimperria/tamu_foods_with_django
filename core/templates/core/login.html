@@ -1,0 +1,22 @@
+<html>
+    <head>
+        {% extends 'tamueats/base.html'%}
+        {% load static %}
+        {% load bootstrap4 %}
+
+        {% block styles %}
+        {% bootstrap_css %}
+        <link rel="stylesheet" type="text/css" href="{% static '/css/base.css' %}">
+        <link rel="stylesheet" type="text/css" href="{% static '/css/authpage.css' %}">
+        {% endblock %}
+    </head>
+    <body>
+        {% block content %}
+            <section class="section">
+                <div class="auth__form">
+                    <p>Login form coming soon.</p>
+                </div>
+            </section>
+        {% endblock %}
+    </body>
+</html>

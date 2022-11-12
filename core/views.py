@@ -1,10 +1,15 @@
 from django.shortcuts import render
+from .forms import CustomerRegistrationForm
 
 def register_account(request):
     '''
         View function to handle user registration
     '''
-    return render(request, 'core/register.html')
+
+    form = CustomerRegistrationForm()
+
+    context = {'form': form}
+    return render(request, 'core/register.html', context)
 
 def login_account(request):
     '''

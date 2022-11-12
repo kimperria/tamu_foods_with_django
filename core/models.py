@@ -20,7 +20,7 @@ class VendorProfile(models.Model):
         settings.AUTH_USER_MODEL, on_delete=models.PROTECT
     )
     company_name = models.CharField(max_length=255)
-    company_email = models.EmailField()
+    # company_email = models.EmailField()
     location = models.CharField(max_length=255)
     company_description = models.TextField()
     owner = models.BooleanField(default=True)
@@ -35,5 +35,5 @@ class MerchantProfile(models.Model):
         settings.AUTH_USER_MODEL, on_delete=models.PROTECT
     )
     merchant_name = models.CharField(max_length=255)
-    merchant_email_address = models.EmailField()
+    # merchant_email_address = models.EmailField()
     merchant_descrption= models.TextField()

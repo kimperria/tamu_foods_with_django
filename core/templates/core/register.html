@@ -3,6 +3,7 @@
         {% extends 'tamueats/base.html'%}
         {% load static %}
         {% load bootstrap4 %}
+        {% load crispy_forms_tags %}
 
         {% block styles %}
         {% bootstrap_css %}
@@ -12,9 +13,25 @@
     </head>
     <body>
         {% block content %}
-            <section class="section">
-                <div class="auth__form">
-                    <p>Registration form coming soon.</p>
+            <section class="auth__page-section">
+                <div class="row">
+                    <div class="col-sm-12 col-md-4 col-lg-3"></div>
+                    <div class="col-sm-12 col-md-6 col-lg-6 auth__form">
+                        <form method="POST" action="">
+                            {% csrf_token %}
+                            <fieldset class="form-group">
+                                <legend class="text-center auth_legend">Create Customer Account</legend>
+                                {{ form|crispy }}
+                            </fieldset>
+                            <div class="form-group">
+                                <button class="btn btn-outline-primary auth__form-btn" type="submit">Sign Up</button>
+                            </div>
+                        </form>
+                        <div class="pt-2 border-top text-center auth_redirect">
+                            <small>Already a customer? <a href="{% url 'SignIn' %}">SignIn</a></small>
+                        </div>
+                    </div>
+                    <div class="col-sm-12 col-md-4"></div>
                 </div>
             </section>
         {% endblock %}

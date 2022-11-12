@@ -1,5 +1,21 @@
-.auth__form{
-    display: flex;
-    justify-content: center;
-    align-items: center;
+.auth__page-section{
+    padding: 3rem 0 2rem;
+}
+
+/* .auth__form{
+    border: 1px solid red;
+} */
+
+.auth_legend{
+    font-weight: var(--font-medium);
+    font-size: var(--h2-font-size);
+}
+
+.auth__form-btn {
+    width: 100%;
+}
+
+.auth_redirect{
+    font-size: var(--smaller-font-size);
+    font-style: oblique;
 }

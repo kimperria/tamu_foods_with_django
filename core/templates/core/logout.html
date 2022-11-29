@@ -1,0 +1,29 @@
+<html>
+    <head>
+        {% extends 'tamueats/base.html'%}
+        {% load static %}
+        {% load bootstrap4 %}
+        {% load crispy_forms_tags %}
+
+        {% block styles %}
+        {% bootstrap_css %}
+        <link rel="stylesheet" type="text/css" href="{% static '/css/base.css' %}">
+        <link rel="stylesheet" type="text/css" href="{% static '/css/authpage.css' %}">
+        {% endblock %}
+    </head>
+    <body>
+        {% block content %}
+            <div class="container container-fluid auth__page-section">
+                <div class="text-center">
+                    <h2>You have been logged out</h2>
+
+                    <div class="border-top pt-3">
+                        <small class="text-muted btn btn-outline-primary">
+                            <a href="{% url 'SignIn' %}">Login</a>
+                        </small>
+                    </div>
+                </div>
+            </div>
+        {% endblock %}
+    </body>
+</html>

@@ -17,7 +17,34 @@
               </li>
           </ul>
           <ul class="navbar-nav ml-auto">
-                <li class="nav-item dropdown">
+            {% if user.is_authenticated %}
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                Account
+              </a>
+              <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                <a class="dropdown-item" href="{% url 'customer-profile' %}">Profile</a>
+                <a class="dropdown-item" href="{% url 'logout' %}">Logout</a>
+            </li>
+
+            {% else %}
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                Register
+              </a>
+              <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                <a class="dropdown-item" href="{% url 'SignUp' %}">Customer Account</a>
+                <a class="dropdown-item" href="{% url 'Register' %}">Vendor/Merchant Account</a>
+            </li>
+          <!-- <li class="nav-item">
+              <a class="nav-link" href="{% url 'SignUp' %}">Register</a>
+          </li> -->
+            <li class="nav-item">
+                <a class="nav-link" href="{% url 'SignIn' %}">Login</a>
+            </li>
+
+            {% endif %}
+                <!-- <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                       Account
                     </a>
@@ -33,13 +60,13 @@
                     <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                       <a class="dropdown-item" href="{% url 'SignUp' %}">Customer Account</a>
                       <a class="dropdown-item" href="{% url 'Register' %}">Vendor/Merchant Account</a>
-                </li>
+                </li> -->
                 <!-- <li class="nav-item">
                     <a class="nav-link" href="{% url 'SignUp' %}">Register</a>
                 </li> -->
-                <li class="nav-item">
+                <!-- <li class="nav-item">
                     <a class="nav-link" href="{% url 'SignIn' %}">Login</a>
-                </li>
+                </li> -->
                 <li class="nav-item">
                     <a class="nav-link" href="{% url 'ComingSoonPage' %}">Cart</a>
                 </li>

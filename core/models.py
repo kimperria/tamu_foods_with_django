@@ -9,7 +9,7 @@ class User(AbstractUser):
     '''
     email = models.EmailField(unique=True)
     profile_photo = CloudinaryField('images/',default='https://res.cloudinary.com/dbgbail9r/image/upload/v1669642977/tamu_foods_with_django/user_profile_image_n5g3kg.png')
-    is_customer = models.BooleanField('Is customer', default=True)
+    is_customer = models.BooleanField('Is customer', default=False)
     is_vendor = models.BooleanField('Is vendor', default=False)
     is_merchant = models.BooleanField('Is merchant', default=False)
 
@@ -40,6 +40,9 @@ class Vendor(models.Model):
     location = models.CharField(max_length=255, blank=True)
     company_description = models.TextField(blank=True)
     # owner = models.BooleanField(default=True)
+
+    # def __str__(self):
+    #     return self.company_name
 
 
 class Merchant(models.Model):

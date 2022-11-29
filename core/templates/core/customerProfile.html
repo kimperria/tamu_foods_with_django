@@ -46,10 +46,13 @@
                                         <p><strong>Username: </strong>{{ user.username }}</p>
                                     </div>
                                     <div class="col">
-                                        <p><strong>Phone Number: </strong>{{ user.phone_number}}</p>
+                                        <p><strong>Phone Number: </strong>{{ user.customer.phone_number }}</p>
                                     </div>
                                 </div>
                             </div>
+                        </div>
+                        <div class="card-footer border-top">
+                            <p><strong>Customer since :</strong> {{ user.customer.registration_date|date:"jS F Y" }}</p>
                         </div>
                     </div>
                 </div>

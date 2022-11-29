@@ -1,1 +1,74 @@
-<h2>Test</h2>
+<html>
+    <head>
+        {% extends 'tamueats/base.html'%}
+        {% load static %}
+        {% load bootstrap4 %}
+        {% load crispy_forms_tags %}
+
+        {% block styles %}
+        {% bootstrap_css %}
+        <link rel="stylesheet" type="text/css" href="{% static '/css/base.css' %}">
+        <link rel="stylesheet" type="text/css" href="{% static '/css/customerProfile.css' %}">
+        {% endblock %}
+    </head>
+    <body>
+        {% block content %}
+            <div class="row justify-content-md-center profile__section">
+                <div class="col-sm-12 col-md-8 col-lg-6">
+                    <div class="card">
+                        <div class="row justify-content-md-center mt-1">
+                            <div class="col col-lg-2">
+                                <!-- empty -->
+                            </div>
+                            <div class="col-md-auto">
+                                <img src="{{ user.profile_photo.url }}" 
+                                    alt="{{ user.username }} Profile Image" 
+                                    class="rounded-circle img-fluid img-thumbnail card-imf-top"
+                                    style="height: 200px; width:200px;">
+                            </div>
+                            <div class="col col-lg-2">
+                                <!-- empty -->
+                            </div>
+                        </div>
+                        <div class="card-body">
+                            <div class="card-title">
+                                <div class="row">
+                                    <div class="col">
+                                        <p><strong>First Name: </strong>{{ user.first_name }}</p>
+                                    </div>
+                                    <div class="col">
+                                        <p><strong>Last Name: </strong>{{ user.last_name}}</p>
+                                    </div>
+                                </div>
+                                <p><strong>Email Address: </strong>{{user.email}}</p>
+                                <div class="row">
+                                    <div class="col">
+                                        <p><strong>Username: </strong>{{ user.username }}</p>
+                                    </div>
+                                    <div class="col">
+                                        <p><strong>Phone Number: </strong>{{ user.phone_number}}</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-12 col-md-4  col-lg-6 card update__profile">
+                    <form method="POST" action="" class="mt-2">
+                        {% csrf_token %}
+                        <fieldset class="form-group">
+                            <h4 class="section__subtitle">Update Customer Information</h4>
+                            {{ user_form|crispy }}
+                            {{ customer_form|crispy }}
+                        </fieldset>
+                        <div class="form-group">
+                            <button class="btn btn-outline-primary"
+                                    style="width: 100%;">Update</button>
+                        </div>
+                    </form>
+                </div>
+
+            </div>
+        {% endblock %}
+    </body>
+</html>

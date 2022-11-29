@@ -16,6 +16,9 @@ from pathlib import Path
 import os
 from decouple import config, Csv
 import dj_database_url
+import cloudinary
+import cloudinary.uploader
+import cloudinary.api
 
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
@@ -165,3 +168,11 @@ INTERNAL_IPS = [
 AUTH_USER_MODEL = 'core.user'
 
 CRISPY_TEMPLATE_PACK = 'bootstrap4'
+
+#cloudinary config
+cloudinary.config(
+    cloud_name=config('CLOUDINARY_CLOUD_NAME'),
+    api_key=config('CLOUDINARY_API_KEY'),
+    api_secret=config('CLOUDINARY_API_SECRET'),
+    secure=True
+)

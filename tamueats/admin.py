@@ -99,7 +99,7 @@ class CustomerAdmin(admin.ModelAdmin):
     Admin class for customer 
         search fields allow case sensitive search of character
     '''
-    list_display = ['first_name', 'last_name', 'username', 'registration_date']
+    list_display = ['first_name', 'last_name', 'registration_date']
     list_per_page = 10
     #eagerloading user data
     list_select_related = ['user']

@@ -8,7 +8,7 @@ class User(AbstractUser):
         Redefine user instances for the application
     '''
     email = models.EmailField(unique=True)
-    # profile_photo = CloudinaryField('images/',default='https://res.cloudinary.com/dbgbail9r/image/upload/v1669642977/tamu_foods_with_django/user_profile_image_n5g3kg.png')
+    profile_photo = CloudinaryField('images/',default='https://res.cloudinary.com/dbgbail9r/image/upload/v1669642977/tamu_foods_with_django/user_profile_image_n5g3kg.png')
     is_customer = models.BooleanField('Is customer', default=True)
     is_vendor = models.BooleanField('Is vendor', default=False)
     is_merchant = models.BooleanField('Is merchant', default=False)

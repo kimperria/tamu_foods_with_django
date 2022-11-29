@@ -1,6 +1,6 @@
 from django.shortcuts import render, redirect
 from django.contrib.auth import authenticate, login, logout
-from .forms import UserRegistrationForm, NonCustomerRegistrationForm, LoginForm
+from .forms import UserRegistrationForm, NonCustomerRegistrationForm, LoginForm, UserUpdateForm, CustomerInformationForm
 from .models import User, Vendor, Merchant
 ## Dependant to tamueats
 from tamueats.models import Customer
@@ -15,13 +15,12 @@ def register_customer_account(request):
         form = UserRegistrationForm(request.POST)
         if form.is_valid():
             user = form.save()
+            print(f'User {user}')
             if user.is_customer == True:
                 username = form.cleaned_data.get('username')
                 customer = Customer.objects.create(username=username,user=user)
                 print(customer)
-            else:
-                print('Not a customer')
-            # return redirect('SignIn')
+            return redirect('SignIn')
         else:
             system_message = 'Form is not Valid'
     else:
@@ -30,6 +29,28 @@ def register_customer_account(request):
 
     context = {'form': form, 'systemMessage': system_message}
     return render(request, 'core/registerCustomer.html', context)
+
+def customer_profile(request):
+    '''
+    Profile page view function
+    '''
+
+    if request.method == 'POST':
+        user_information_form = UserUpdateForm(request.POST, request.FILES, instance=request.user)
+        customer_information_form = CustomerInformationForm(request.POST, instance=request.user)
+        if user_information_form.is_valid() and customer_information_form.is_valid:
+            user_information_form.save()
+            customer_information_form.save()
+            ## Messages
+            return redirect('customer-profile')
+    else:
+        user_information_form = UserUpdateForm(instance=request.user)
+        customer_information_form = CustomerInformationForm(instance=request.user)
+    context = {
+        "user_form": user_information_form,
+        "customer_form": customer_information_form
+        }
+    return render(request, 'core/customerProfile.html', context)
 
 def register_non_customer_account(request):
     '''
@@ -88,14 +109,6 @@ def login_account(request):
                 
     return render(request, 'core/login.html', context)
 
-def customer_profile(request):
-    '''
-    Profile page view function
-    '''
-
-
-    # context = 'Customer profile'
-    return render(request, 'core/customerProfile.html')
 
 def dashboard(request):
     '''

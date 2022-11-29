@@ -4,7 +4,7 @@ from django.contrib.contenttypes.admin import GenericTabularInline
 from tamueats.admin import FoodProductAdmin
 from tamueats.models import FoodProduct
 from tags.models import TaggedItem
-from .models import User
+from .models import User, Vendor, Merchant
 
 
 @admin.register(User)
@@ -22,6 +22,13 @@ class UserAdmin(BaseUserAdmin):
         ),
     )
 
+@admin.register(Vendor)
+class VendorAdmin(admin.ModelAdmin):
+    list_per_page = 10
+
+@admin.register(Merchant)
+class MerchantAdmin(admin.ModelAdmin):
+    list_per_page = 10
 
 class TagInline(GenericTabularInline):
     '''

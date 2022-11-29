@@ -52,8 +52,10 @@ class Customer(models.Model):
     '''
     Class that defines Client instance 
     '''
-    username = models.CharField(max_length=150, null=True, blank=True)
-    phone_number = models.CharField(max_length=255)
+    username = models.CharField(max_length=150)
+    first_name = models.CharField(max_length=255, blank=True)
+    last_name = models.CharField(max_length=255, blank=True)
+    phone_number = models.CharField(max_length=255, blank=True)
     registration_date = models.DateTimeField(auto_now_add=True)
     user = models.OneToOneField(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
 

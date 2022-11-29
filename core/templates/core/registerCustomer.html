@@ -20,6 +20,7 @@
                         <form method="POST" action="">
                             {% csrf_token %}
                             <fieldset class="form-group">
+                                {{ systemMessage }}
                                 <legend class="text-center auth_legend">Create Customer Account</legend>
                                 {{ form|crispy }}
                             </fieldset>

@@ -24,10 +24,19 @@
                     <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                       <a class="dropdown-item" href="{% url 'ComingSoonPage' %}">Profile</a>
                       <a class="dropdown-item" href="{% url 'ComingSoonPage' %}">Logout</a>
-                  </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="{% url 'SignUp' %}">Register</a>
                 </li>
+
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                      Register
+                    </a>
+                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                      <a class="dropdown-item" href="{% url 'SignUp' %}">Customer Account</a>
+                      <a class="dropdown-item" href="{% url 'Register' %}">Vendor/Merchant Account</a>
+                </li>
+                <!-- <li class="nav-item">
+                    <a class="nav-link" href="{% url 'SignUp' %}">Register</a>
+                </li> -->
                 <li class="nav-item">
                     <a class="nav-link" href="{% url 'SignIn' %}">Login</a>
                 </li>

@@ -67,7 +67,7 @@ class Merchant(models.Model):
         default=PENDING_APPROVAL_BY_ADMIN
     )
     merchant_name = models.CharField(max_length=255)
-    merchant_descrption= models.TextField()
+    merchant_description= models.TextField()
 
     def __str__(self):
-        return self.merchant_name
+        return self.user.username

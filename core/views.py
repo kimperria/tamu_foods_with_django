@@ -2,7 +2,7 @@ from django.shortcuts import render, redirect
 from django.contrib.auth import authenticate, login, logout
 
 from .decorators import unauthenticated_user
-from .forms import UserRegistrationForm, NonCustomerRegistrationForm, LoginForm, UserUpdateForm, CustomerInformationForm, VendorInformationForm, UpdateUserProfilePicForm
+from .forms import UserRegistrationForm, NonCustomerRegistrationForm, LoginForm, UserUpdateForm, CustomerInformationForm, VendorInformationForm, UpdateUserProfilePicForm, MerchantInformationForm
 from .models import User, Vendor, Merchant
 ## Dependant to tamueats
 from tamueats.models import Customer
@@ -71,15 +71,15 @@ def register_non_customer_account(request):
             user = form.save()
             print(user)
             if user.is_vendor == True:
-                print(f' Vendor {user.is_vendor} ')
+                # print(f' Vendor {user.is_vendor} ')
                 vendor = Vendor.objects.create(user=user)
-                print(f'Vendor {vendor}')
+                # print(f'Vendor {vendor}')
                 return redirect('SignIn')
             elif user.is_merchant == True:
-                print(f' Merchant {user.is_merchant} ')
+                # print(f' Merchant {user.is_merchant} ')
                 merchant = Merchant.objects.create(user=user)
-                print(f'Merchant {merchant}')
-                return redirect('dashboard')
+                # print(f'Merchant {merchant}')
+                return redirect('SignIn')
         else:
             system_message = 'Form is not Valid'
     else:
@@ -124,7 +124,7 @@ def login_account(request):
 
 def vendor_profile(request):
     '''
-    Non customers dashboard
+    Vendors profile
     '''
     user = request.user
     status = user.vendor.approval_status
@@ -153,6 +153,37 @@ def vendor_profile(request):
         'status': status
     }
     return render(request, 'core/vendorProfile.html', context)
+
+
+def merchant_profile(request):
+    '''
+     Merchant view func
+    '''
+    merchant = request.user
+    status = merchant.merchant.approval_status
+    print(merchant, status)
+
+    if request.method == 'POST':
+        user_profile_photo_form = UpdateUserProfilePicForm(request.FILES, instance=merchant)
+        merchant_information_form = MerchantInformationForm(request.POST, instance=merchant)
+        if user_profile_photo_form.is_valid() and merchant_information_form.is_valid:
+            user_profile_photo_form.save()
+            merchant_information_form.save()
+            if status == 'P':
+                return redirect('merchant-profile')
+            else:
+                return redirect('dashboard')
+    else:
+        user_profile_photo_form = UpdateUserProfilePicForm(instance=merchant)
+        merchant_information_form = MerchantInformationForm(instance=merchant)
+
+
+    context = {
+        'user_profile_pic_form': user_profile_photo_form,
+        'merchant_form':merchant_information_form,
+        'status': status
+    }
+    return render(request, 'core/merchantProfile.html', context)
 
 
 def dashboard(request):

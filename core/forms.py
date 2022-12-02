@@ -60,3 +60,8 @@ class VendorInformationForm(forms.ModelForm):
     class Meta:
         model = Vendor
         fields = ['company_name', 'location', 'company_description']
+
+class MerchantInformationForm(forms.ModelForm):
+    class Meta:
+        model = Merchant
+        fields = ['merchant_name', 'merchant_description']

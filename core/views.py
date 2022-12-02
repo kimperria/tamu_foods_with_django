@@ -111,7 +111,7 @@ def login_account(request):
 
             elif user is not None and user.is_merchant is True:
                 login(request, user)
-                return redirect('dashboard')
+                return redirect('merchant-profile')
             else:
                 system_message = 'Invalid form'
         else:
@@ -165,17 +165,18 @@ def merchant_profile(request):
 
     if request.method == 'POST':
         user_profile_photo_form = UpdateUserProfilePicForm(request.FILES, instance=merchant)
-        merchant_information_form = MerchantInformationForm(request.POST, instance=merchant)
+        merchant_information_form = MerchantInformationForm(request.POST, instance=merchant.merchant)
         if user_profile_photo_form.is_valid() and merchant_information_form.is_valid:
             user_profile_photo_form.save()
             merchant_information_form.save()
+            print(merchant_information_form)
             if status == 'P':
                 return redirect('merchant-profile')
             else:
                 return redirect('dashboard')
     else:
         user_profile_photo_form = UpdateUserProfilePicForm(instance=merchant)
-        merchant_information_form = MerchantInformationForm(instance=merchant)
+        merchant_information_form = MerchantInformationForm(instance=merchant.merchant)
 
 
     context = {
@@ -190,4 +191,15 @@ def dashboard(request):
     '''
     Dashboard view function
     '''
-    return render(request, 'core/dashboard.html')
+    user = request.user
+    print(user)
+    if user.is_vendor is True:
+        vendor = user
+        print(vendor)
+    elif user.is_merchant is True:
+        merchant = user
+
+    context = {
+        'user': user,
+    }
+    return render(request, 'core/dashboard.html', context)

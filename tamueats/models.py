@@ -116,6 +116,22 @@ class FoodOrder(models.Model):
     def __str__(self):
          return f' {self.customer} Order'
 
+    @property
+    def get_cart_total(self):
+        order_items = self.foodorderitem_set.all()
+        total = sum([ item.get_total for item in order_items])
+        # print(f'Print {total}')
+        return total
+
+    @property
+    def get_cart_items(self):
+        order_items = self.foodorderitem_set.all()
+        total = sum([ item.quantity for item in order_items])
+        # print(f'Print {total}')
+        return total
+
+        
+
 class FoodOrderItem(models.Model):
     '''
         Class that handles order processing'
@@ -126,6 +142,11 @@ class FoodOrderItem(models.Model):
         validators = [MinValueValidator(1)]
     )
     unit_price = models.DecimalField(max_digits=6, decimal_places=2)
+
+    @property
+    def get_total(self):
+        total = self.food_product.food_unit_price * self.quantity
+        return total
 
 
 class Cart(models.Model):

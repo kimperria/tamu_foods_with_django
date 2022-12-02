@@ -19,19 +19,16 @@ def menu_page(request):
 def cart_page(request):
     if request.user.is_authenticated:
         customer = request.user.customer
-        print(customer)
         order, created = FoodOrder.objects.get_or_create(customer=customer, payment_status='P')
-        # order = FoodOrder.objects.get(customer=customer)
-        print(order)
         items = order.foodorderitem_set.all()
     else:
         items = []
-    print(list(items))
-    for item in items:
-        print(item)
-
+        order = {"get_cart_total": 0, "get_cart_items":0}
+    
+        
     context = {
-        'items':items
+        'items':items,
+        'order': order
     }
     return render(request, 'tamueats/cart.html', context)
 

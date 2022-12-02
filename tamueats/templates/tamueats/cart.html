@@ -22,10 +22,10 @@
                         <table class="cart__table" style=" width: 100%;">
                             <tr>
                                 <th>
-                                    <h5>Items: <strong>3</strong></h5>
+                                    <h5>Items: <strong>{{ order.get_cart_items }}</strong></h5>
                                 </th>
                                 <th>
-                                    <h5>Total: <strong>43</strong></h5>
+                                    <h5>Total: <strong>{{ order.get_cart_total}}</strong></h5>
                                 </th>
                                 <th>
                                     <!-- checkout -->
@@ -72,7 +72,9 @@
                                         <img class="change_quantity" src="{% static 'assets/arrow_down.png' %}" alt="">
                                     </div>
                                 </td>
-                                <!-- <td>100.00</td> -->
+                                <td>
+                                    {{ item.get_total }}
+                                </td>
                             </tr>
                             {% endfor %}
                         </table>

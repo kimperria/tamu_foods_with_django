@@ -167,6 +167,8 @@ INTERNAL_IPS = [
 
 AUTH_USER_MODEL = 'core.user'
 
+LOGIN_URL = 'SignIn'
+
 CRISPY_TEMPLATE_PACK = 'bootstrap4'
 
 #cloudinary config

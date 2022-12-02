@@ -1,5 +1,6 @@
 from django.shortcuts import render, redirect
-from django.contrib.auth import authenticate, login, logout
+from django.contrib.auth import authenticate, login
+from django.contrib.auth.decorators import login_required
 
 from .decorators import unauthenticated_user
 from .forms import UserRegistrationForm, NonCustomerRegistrationForm, LoginForm, UserUpdateForm, CustomerInformationForm, VendorInformationForm, UpdateUserProfilePicForm, MerchantInformationForm
@@ -33,6 +34,7 @@ def register_customer_account(request):
     context = {'form': form, 'systemMessage': system_message}
     return render(request, 'core/registerCustomer.html', context)
 
+@login_required()
 def customer_profile(request):
     '''
     Profile page view function
@@ -123,7 +125,7 @@ def login_account(request):
                 
     return render(request, 'core/login.html', context)
 
-
+@login_required()
 def vendor_profile(request):
     '''
     Vendors profile
@@ -156,7 +158,7 @@ def vendor_profile(request):
     }
     return render(request, 'core/vendorProfile.html', context)
 
-
+@login_required()
 def merchant_profile(request):
     '''
      Merchant view func
@@ -188,7 +190,7 @@ def merchant_profile(request):
     }
     return render(request, 'core/merchantProfile.html', context)
 
-
+@login_required()
 def dashboard(request):
     '''
     Dashboard view function

@@ -34,7 +34,21 @@ def cart_page(request):
 
 def checkout_page(request):
 
-    return render(request, 'tamueats/checkout.html')
+    if request.user.is_authenticated:
+        customer = request.user.customer
+        order, created = FoodOrder.objects.get_or_create(customer=customer, payment_status='P')
+        items = order.foodorderitem_set.all()
+    else:
+        items = []
+        order = {"get_cart_total": 0, "get_cart_items":0}
+    
+        
+    context = {
+        'items':items,
+        'order': order
+    }
+
+    return render(request, 'tamueats/checkout.html', context)
 
 def coming_soon(request):
     '''

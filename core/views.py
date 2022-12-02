@@ -7,6 +7,7 @@ from .models import User, Vendor, Merchant
 ## Dependant to tamueats
 from tamueats.models import Customer
 
+@unauthenticated_user
 def register_customer_account(request):
     '''
         View function to handle customer registration
@@ -58,6 +59,7 @@ def customer_profile(request):
         }
     return render(request, 'core/customerProfile.html', context)
 
+@unauthenticated_user
 def register_non_customer_account(request):
     '''
     View function to hanlde non customer accounts registration
@@ -88,7 +90,7 @@ def register_non_customer_account(request):
     context = {'form': form, 'systemMessage': system_message}
     return render(request, 'core/registerNonCustomer.html', context)
 
-# @unauthenticated_user
+@unauthenticated_user
 def login_account(request):
     '''
         View function to handle user authentication

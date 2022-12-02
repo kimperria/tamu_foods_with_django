@@ -41,8 +41,8 @@ class Vendor(models.Model):
     company_description = models.TextField(blank=True)
     # owner = models.BooleanField(default=True)
 
-    # def __str__(self):
-    #     return self.company_name
+    def __str__(self):
+        return self.user.username
 
 
 class Merchant(models.Model):
@@ -68,3 +68,6 @@ class Merchant(models.Model):
     )
     merchant_name = models.CharField(max_length=255)
     merchant_descrption= models.TextField()
+
+    def __str__(self):
+        return self.merchant_name

@@ -1,5 +1,7 @@
 from django.shortcuts import render, redirect
 from django.contrib.auth import authenticate, login, logout
+
+from .decorators import unauthenticated_user
 from .forms import UserRegistrationForm, NonCustomerRegistrationForm, LoginForm, UserUpdateForm, CustomerInformationForm, VendorInformationForm, UpdateUserProfilePicForm
 from .models import User, Vendor, Merchant
 ## Dependant to tamueats
@@ -72,7 +74,7 @@ def register_non_customer_account(request):
                 print(f' Vendor {user.is_vendor} ')
                 vendor = Vendor.objects.create(user=user)
                 print(f'Vendor {vendor}')
-                return redirect('dashboard')
+                return redirect('vendor-profile')
             elif user.is_merchant == True:
                 print(f' Merchant {user.is_merchant} ')
                 merchant = Merchant.objects.create(user=user)
@@ -86,36 +88,28 @@ def register_non_customer_account(request):
     context = {'form': form, 'systemMessage': system_message}
     return render(request, 'core/registerNonCustomer.html', context)
 
+# @unauthenticated_user
 def login_account(request):
     '''
         View function to handle user authentication
     '''
-    system_message = None 
+    system_message = None
     form = LoginForm(request.POST or None)
     if request.method == 'POST':
         if form.is_valid():
             username = form.cleaned_data.get('username')
             password = form.cleaned_data.get('password')
             user = authenticate(username=username, password=password)
-            print(f'Account {user}')
-            print(user.is_vendor)
-            print(f'Merchant: {user.is_merchant}')
 
             if user is not None and user.is_vendor is True:
-                print(user.is_vendor)
-                # new_user = User.objects.filter(username=username).first()
-                # print(new_user)
-                print('Ran as vendor')
                 login(request, user)
-                return redirect('dashboard')
+                return redirect('vendor-profile')
   
             elif user is not None and user.is_customer is True:
-                print('Ran as customer')
                 login(request, user)
                 return redirect('customer-profile')
 
             elif user is not None and user.is_merchant is True:
-                print('Ran as merchant')
                 login(request, user)
                 return redirect('dashboard')
             else:
@@ -128,10 +122,13 @@ def login_account(request):
     return render(request, 'core/login.html', context)
 
 
-def dashboard(request):
+def vendor_profile(request):
     '''
     Non customers dashboard
     '''
+    user = request.user
+    status = user.vendor.approval_status
+    # print(user, status)
     if request.method == 'POST':
         user_profile_photo_form = UpdateUserProfilePicForm(request.FILES, instance=request.user)
         vendor_information_form = VendorInformationForm(request.POST, instance=request.user.vendor)
@@ -141,10 +138,21 @@ def dashboard(request):
             return redirect('dashboard')
     else:
         user_profile_photo_form = UpdateUserProfilePicForm(instance=request.user)
+        # Throws error on registration
         vendor_information_form = VendorInformationForm(instance=request.user.vendor)
+    
+    # vendor_information_form = VendorInformationForm()
 
     context = {
         'user_profile_pic_form': user_profile_photo_form,
-        'vendor_form':vendor_information_form
+        'vendor_form':vendor_information_form,
+        'status': status
     }
-    return render(request, 'core/dashboard.html', context)
+    return render(request, 'core/vendorProfile.html', context)
+
+
+def dashboard(request):
+    '''
+    Dashboard view function
+    '''
+    return render(request, 'core/dashboard.html')

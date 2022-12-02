@@ -23,7 +23,7 @@ admin.site.index_title= 'SuperUser Interface: Created by Kimperria'
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('tamufoods/', include('tamueats.urls')),
+    path('', include('tamueats.urls')),
     path('members/', include('core.urls')),
     path('__debug__/', include(debug_toolbar.urls)),
 ]

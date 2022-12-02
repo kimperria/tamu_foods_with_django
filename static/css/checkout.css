@@ -1,0 +1,12 @@
+.row{
+    justify-content: space-between;
+}
+
+.checkout_card{
+    box-shadow: hsl(0, 0%, 80%) 0 0 16px;
+    /* border: 2px solid red; */
+}
+
+.cart__table{
+    margin-bottom: 2rem;
+}

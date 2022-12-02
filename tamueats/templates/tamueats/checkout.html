@@ -1,0 +1,45 @@
+<html>
+    <head>
+        {% extends 'tamueats/base.html'%}
+        {% load static %}
+        {% load bootstrap4 %}
+
+        {% block styles %}
+        {% bootstrap_css %}
+        <link rel="stylesheet" type="text/css" href="{% static '/css/base.css' %}">
+        <link rel="stylesheet" type="text/css" href="{% static '/css/checkout.css' %}">
+        {% endblock %}
+    </head>
+    <body>
+        {% block content %}
+        <div class="checkout">
+            <h2 class="section__title mt-2">Checkout</h2>
+
+            <div class="row">
+                <div class="col-md-7 col-lg-7 pt-2 checkout_card">
+                    <a href="{% url 'cart' %}" class="btn btn-outline-dark">&#x2190; Back to Cart</a>
+
+                    <hr>
+
+                    <h2>Order Summary</h2>
+
+                    <table class="cart__table" style=" width: 100%;">
+                        <tr class="border-top">
+                            <td>Isc</td>
+                            <td>Samosa</td>
+                            <td>20.00</td>
+                            <td>100.00</td>
+                        </tr>
+                    </table>
+                    <h6><strong>Grand Total: 100</strong></h6>
+
+                </div>
+
+                <div class="col-md-4 col-lg-4 checkout_card">
+                    <p>Delivery</p>
+                </div>
+            </div>
+        </div>
+        {% endblock %}
+    </body>
+</html>

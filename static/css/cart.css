@@ -1,0 +1,19 @@
+.cart_header{
+    /* border: 2px solid black; */
+    box-shadow: hsl(0, 0%, 80%) 0 0 16px;
+    padding-bottom: 2rem;
+}
+
+.quantity{
+    display:flex;
+    justify-content: space-around;
+}
+
+.change_quantity{
+    display: block;
+    margin: 4px;
+    width: 20px;
+    height: 12px;
+    cursor: pointer;
+    transition: 1s;
+}

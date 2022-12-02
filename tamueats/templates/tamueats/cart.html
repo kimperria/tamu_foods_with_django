@@ -1,0 +1,81 @@
+<html>
+    <head>
+        {% extends 'tamueats/base.html'%}
+        {% load static %}
+        {% load bootstrap4 %}
+
+        {% block styles %}
+        {% bootstrap_css %}
+        <link rel="stylesheet" type="text/css" href="{% static '/css/base.css' %}">
+        <link rel="stylesheet" type="text/css" href="{% static '/css/cart.css' %}">
+        {% endblock %}
+    </head>
+    <body>
+        {% block content %}
+        <div class="menu">
+            <h2 class="section__title mt-2">Cart</h2>
+                <div class="row cart_header">
+                    <div class="col-lg-12 pt-3">
+                        <a href="{% url 'MenuPage' %}" class="btn btn-outline-dark">&#x2190; Continue Shopping</a>
+                        <hr>
+
+                        <table class="cart__table" style=" width: 100%;">
+                            <tr>
+                                <th>
+                                    <h5>Items: <strong>3</strong></h5>
+                                </th>
+                                <th>
+                                    <h5>Total: <strong>43</strong></h5>
+                                </th>
+                                <th>
+                                    <!-- checkout -->
+                                    <a href="{% url 'checkout' %}" class="btn btn-success" style="float: right; margin: 5px;">Checkout</a>
+                                </th>
+                            </tr>
+                        </table>
+                    </div>
+                </div>
+                <br>
+                <div class="row cart_header">
+                    <div class="col-lg-12 pt-3">
+
+                        <table class="cart__table" style=" width: 100%;">
+                            <hr>
+                            <tr>
+                                <th>
+                                    <h6>Image</h6>
+                                </th>
+                                <th>
+                                    <h6><strong>Item</strong></h6>
+                                </th>
+                                <th>
+                                    <h6>Price</h6>
+                                </th>
+                                <th>
+                                    <h6>Quantity</h6>
+                                </th>
+                                <th>
+                                    <h6><strong>Total</strong></h6>
+                                </th>
+                            </tr>
+
+                            <tr class="border-top">
+                                <td>Isc</td>
+                                <td>Samosa</td>
+                                <td>20.00</td>
+                                <td class="quantity">
+                                    <p>5</p>
+                                    <div>
+                                        <img class="change_quantity" src="{% static 'assets/arrow_up.png' %}" alt="">
+                                        <img class="change_quantity" src="{% static 'assets/arrow_down.png' %}" alt="">
+                                    </div>
+                                </td>
+                                <td>100.00</td>
+                            </tr>
+                        </table>
+                    </div>
+                </div>
+        </div>
+        {% endblock %}
+    </body>
+</html>

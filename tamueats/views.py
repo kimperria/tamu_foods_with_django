@@ -16,6 +16,13 @@ def menu_page(request):
     food_querry_set = FoodProduct.objects.all()
     return render(request, "tamueats/menu.html", {"menu":food_querry_set})
 
+def cart_page(request):
+    return render(request, 'tamueats/cart.html')
+
+def checkout_page(request):
+
+    return render(request, 'tamueats/checkout.html')
+
 def coming_soon(request):
     '''
     View function to render coming soon page

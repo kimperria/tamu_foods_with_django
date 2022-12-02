@@ -16,7 +16,7 @@ class FoodProductCategory(models.Model):
         Class that defines with category a food product belongs to
     '''
     title = models.CharField(max_length=255)
-    featured_product = models.ForeignKey('FoodProduct', on_delete=models.SET_NULL, null=True, related_name='+')
+    featured_product = models.ForeignKey('FoodProduct', on_delete=models.SET_NULL, null=True, blank=True, related_name='+')
 
     def __str__(self):
         return self.title

@@ -150,10 +150,10 @@
 /*=============== BREAKPOINTS ===============*/
 /* For large devices */
 @media screen and (max-width: 992px) {
-  .container {
+  /* .container {
     margin-left: var(--mb-1-5);
     margin-right: var(--mb-1-5);
-  }
+  } */
 
   .button {
     padding: 1rem 1.75rem;
@@ -171,9 +171,9 @@
     margin: 0 0 var(--header-height) 0;
   }
 
-  .section {
+  /* .section {
     padding: 2rem 0 4rem;
-  }
+  } */
 
   .section__subtitle {
     margin-bottom: var(--mb-3);

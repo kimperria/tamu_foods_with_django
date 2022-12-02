@@ -1,7 +1,8 @@
 from django.shortcuts import render
 from django.http import HttpResponse, JsonResponse
+import json
 
-from .models import FoodProduct, Customer, FoodOrder
+from .models import FoodProduct, Customer, FoodOrder, FoodOrderItem
 
 def index(request):
     '''
@@ -52,6 +53,29 @@ def checkout_page(request):
     return render(request, 'tamueats/checkout.html', context)
 
 def update_item(request):
+    data = json.loads(request.body)
+    itemId = data['itemId']
+    action = data['action']
+
+    print('Action:', action, 'ItemId:', itemId)
+
+    customer = request.user.customer
+    product = FoodProduct.objects.get(id=itemId)
+    order, created = FoodOrder.objects.get_or_create(customer=customer, payment_status='P')
+
+    orderItem, created = FoodOrderItem.objects.get_or_create(food_order=order, food_product=product)
+
+
+    if action == 'add':
+        orderItem.quantity = (orderItem.quantity + 1)
+    elif action == 'remove':
+        orderItem.quantity = (orderItem.quantity - 1)
+
+    orderItem.save()
+
+    if orderItem.quantity <=0:
+        orderItem.delete()
+    
     return JsonResponse("Item was added", safe=False)
 
 def coming_soon(request):

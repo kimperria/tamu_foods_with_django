@@ -8,29 +8,64 @@ def index(request):
     '''
     Function view to display home page
     '''
-    return render(request, 'tamueats/homepage.html')
+
+    if request.user.is_authenticated:
+        customer = request.user.customer
+        order, created = FoodOrder.objects.get_or_create(customer=customer, payment_status='P')
+        items = order.foodorderitem_set.all()
+        cartItems = order.get_cart_items
+    else:
+        items = []
+        order = {"get_cart_total": 0, "get_cart_items":0}
+        cartItems = order['get_cart_items']
+    
+        
+    context = {
+        'cartItems':cartItems
+    }
+    return render(request, 'tamueats/homepage.html', context)
 
 def menu_page(request):
     '''
     View function for the menu page
     '''
-    # customers = Customer.objects.all()
+    if request.user.is_authenticated:
+        customer = request.user.customer
+        order, created = FoodOrder.objects.get_or_create(customer=customer, payment_status='P')
+        items = order.foodorderitem_set.all()
+        cartItems = order.get_cart_items
+    else:
+        items = []
+        order = {"get_cart_total": 0, "get_cart_items":0}
+        cartItems = order['get_cart_items']
+    
+        
+
+
     food_querry_set = FoodProduct.objects.all()
-    return render(request, "tamueats/menu.html", {"menu":food_querry_set})
+    context = {
+        'order': order,
+        'menu': food_querry_set,
+        'cartItems':cartItems
+    }
+    return render(request, "tamueats/menu.html", context)
 
 def cart_page(request):
     if request.user.is_authenticated:
         customer = request.user.customer
         order, created = FoodOrder.objects.get_or_create(customer=customer, payment_status='P')
         items = order.foodorderitem_set.all()
+        cartItems = order.get_cart_items
     else:
         items = []
         order = {"get_cart_total": 0, "get_cart_items":0}
+        cartItems = order['get_cart_items']
     
         
     context = {
         'items':items,
-        'order': order
+        'order': order,
+        'cartItems':cartItems
     }
     return render(request, 'tamueats/cart.html', context)
 
@@ -40,14 +75,17 @@ def checkout_page(request):
         customer = request.user.customer
         order, created = FoodOrder.objects.get_or_create(customer=customer, payment_status='P')
         items = order.foodorderitem_set.all()
+        cartItems = order.get_cart_items
     else:
         items = []
         order = {"get_cart_total": 0, "get_cart_items":0}
+        cartItems = order['get_cart_items']
     
         
     context = {
         'items':items,
-        'order': order
+        'order': order,
+        'cartItems':cartItems
     }
 
     return render(request, 'tamueats/checkout.html', context)

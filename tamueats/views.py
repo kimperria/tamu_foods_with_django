@@ -1,5 +1,6 @@
 from django.shortcuts import render
-from django.http import HttpResponse
+from django.http import HttpResponse, JsonResponse
+
 from .models import FoodProduct, Customer, FoodOrder
 
 def index(request):
@@ -49,6 +50,9 @@ def checkout_page(request):
     }
 
     return render(request, 'tamueats/checkout.html', context)
+
+def update_item(request):
+    return JsonResponse("Item was added", safe=False)
 
 def coming_soon(request):
     '''

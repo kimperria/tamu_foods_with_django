@@ -6,6 +6,7 @@ urlpatterns = [
     path('menu/', views.menu_page, name='MenuPage'),
     path('cart/', views.cart_page, name='cart'),
     path('checkout/', views.checkout_page, name='checkout'),
+    path('update_item/', views.update_item, name='update_item'),
 
     #coming soon page template
     path('coming-soon/', views.coming_soon, name='ComingSoonPage'),

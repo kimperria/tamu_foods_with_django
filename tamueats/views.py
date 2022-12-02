@@ -1,6 +1,6 @@
 from django.shortcuts import render
 from django.http import HttpResponse
-from .models import FoodProduct, Customer
+from .models import FoodProduct, Customer, FoodOrder
 
 def index(request):
     '''
@@ -17,7 +17,23 @@ def menu_page(request):
     return render(request, "tamueats/menu.html", {"menu":food_querry_set})
 
 def cart_page(request):
-    return render(request, 'tamueats/cart.html')
+    if request.user.is_authenticated:
+        customer = request.user.customer
+        print(customer)
+        order, created = FoodOrder.objects.get_or_create(customer=customer, payment_status='P')
+        # order = FoodOrder.objects.get(customer=customer)
+        print(order)
+        items = order.foodorderitem_set.all()
+    else:
+        items = []
+    print(list(items))
+    for item in items:
+        print(item)
+
+    context = {
+        'items':items
+    }
+    return render(request, 'tamueats/cart.html', context)
 
 def checkout_page(request):
 

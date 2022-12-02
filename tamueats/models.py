@@ -3,6 +3,8 @@ from django.conf import settings
 from django.core.validators import MinValueValidator
 from django.db import models
 
+from cloudinary.models import CloudinaryField
+
 class Discounts(models.Model):
     '''
      Class that defines promotions and discount on items 
@@ -42,6 +44,7 @@ class FoodProduct(models.Model):
     )
     last_update = models.DateTimeField(auto_now=True)
     food_category = models.ForeignKey(FoodProductCategory, on_delete=models.PROTECT)
+    food_image = CloudinaryField('images/',default='https://res.cloudinary.com/dbgbail9r/image/upload/v1669985026/tamu_foods_with_django/food_avkxmo.png')
     promotions = models.ManyToManyField(Discounts, blank=True)
 
     def __str__(self):
@@ -111,7 +114,7 @@ class FoodOrder(models.Model):
     # product = models.ForeignKey(FoodProduct, on_delete=models.PROTECT)
 
     def __str__(self):
-        return f' {self.customer} Order'
+         return f' {self.customer} Order'
 
 class FoodOrderItem(models.Model):
     '''

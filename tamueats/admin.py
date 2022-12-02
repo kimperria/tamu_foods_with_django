@@ -128,3 +128,15 @@ class FoodOrderAdmin(admin.ModelAdmin):
     inlines = [OrderItemInline]
     list_display = ['id', 'placed_at', 'customer','payment_status', 'delivery_status']
     list_editable = ['payment_status', 'delivery_status']
+
+@admin.register(models.Cart)
+class CartAdmin(admin.ModelAdmin):
+    '''
+    Class registering cart model
+    '''
+
+@admin.register(models.CartItem)
+class CartItemAdmin(admin.ModelAdmin):
+    '''
+    Cart Item admin
+    '''

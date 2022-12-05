@@ -25,6 +25,7 @@
               </a>
               <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                 {% if user.is_customer %}
+                  <a class="dropdown-item" href="{% url 'customer-dashboard' %}">Dashboard</a>
                   <a class="dropdown-item" href="{% url 'customer-profile' %}">Profile</a>
                 {% elif user.is_vendor %}
                   <a class="dropdown-item" href="{% url 'dashboard' %}">Dashboard</a>

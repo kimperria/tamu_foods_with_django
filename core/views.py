@@ -6,7 +6,7 @@ from .decorators import unauthenticated_user
 from .forms import UserRegistrationForm, NonCustomerRegistrationForm, LoginForm, UserUpdateForm, CustomerInformationForm, VendorInformationForm, UpdateUserProfilePicForm, MerchantInformationForm
 from .models import User, Vendor, Merchant
 ## Dependant to tamueats
-from tamueats.models import Customer
+from tamueats.models import Customer, FoodOrder
 
 @unauthenticated_user
 def register_customer_account(request):
@@ -60,6 +60,16 @@ def customer_profile(request):
         "customer_form": customer_information_form
         }
     return render(request, 'core/customerProfile.html', context)
+
+@login_required()
+def customer_dashboard(request):
+    customer = request.user
+    print(customer)
+    message = f'Hello {customer}'
+    context = {
+        'customer': customer,
+    }
+    return render (request, 'core/customerDashboard.html', context)
 
 @unauthenticated_user
 def register_non_customer_account(request):

@@ -10,5 +10,6 @@ urlpatterns = [
     path('account/profile/', views.customer_profile , name='customer-profile'),
     path('vendor/profile/', views.vendor_profile , name='vendor-profile'),
     path('merchant/profile/', views.merchant_profile , name='merchant-profile'),
-    path('dashboard/', views.dashboard, name='dashboard')
+    path('dashboard/', views.dashboard, name='dashboard'),
+    path('customer/dashboard/', views.customer_dashboard, name='customer-dashboard')
 ]

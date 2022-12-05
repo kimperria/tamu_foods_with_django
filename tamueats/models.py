@@ -140,9 +140,9 @@ class FoodOrderItem(models.Model):
     food_product = models.ForeignKey(FoodProduct, on_delete = models.PROTECT)
     quantity = models.PositiveSmallIntegerField(
         validators = [MinValueValidator(1)],
-        null=True, blank=True
+        null=True, blank=True, default=0
     )
-    unit_price = models.DecimalField(max_digits=6, decimal_places=2, null=True, blank=True)
+    # unit_price = models.DecimalField(max_digits=6, decimal_places=2, null=True, blank=True)
 
     @property
     def get_total(self):

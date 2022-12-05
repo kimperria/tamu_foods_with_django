@@ -38,7 +38,7 @@ class FoodProductAdmin(admin.ModelAdmin):
     '''
     autocomplete_fields = ['food_category']
     list_display = ['food_name', 'food_unit_price', 'inventory_status', 'food_category_title']
-    list_editable = ['food_unit_price']
+    # list_editable = ['food_unit_price']
     list_per_page = 10
     list_filter = ['food_category', QuantityFilter,'last_update']
     list_select_related = ['food_category']

@@ -36,7 +36,7 @@
                             <td><img src="{{ item.food_product.food_image}}" alt=""  style="width: 80px;"></td>
                             <td>{{ item.food_product.food_name }}</td>
                             <td>{{item.quantity}}</td>
-                            <td>{{ item.unit_price|floatformat:2 }}</td>
+                            <td>{{ item.food_product.food_unit_price|floatformat:2 }}</td>
                             <td>{{ item.get_total }}</td>
                         </tr>
                         {% endfor %}

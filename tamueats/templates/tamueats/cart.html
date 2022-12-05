@@ -64,7 +64,7 @@
                                 <td><img src="{{ item.food_product.food_image }}" alt="" style="width: 80px;"></td>
                                 <td>{{ item.food_product.food_name }}</td>
                                 <!-- item = food orderitem -->
-                                <td>{{ item.unit_price|floatformat:2 }}</td>
+                                <td>{{ item.food_product.food_unit_price|floatformat:2 }}</td>
                                 <td class="quantity">
                                     <p>{{ item.quantity }}</p>
                                     <div>

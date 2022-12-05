@@ -12,12 +12,13 @@
     </head>
     <body>
         {% block content %}
-        <div class="checkout">
+        <div class="container container-fluid checkout">
             <h2 class="section__title mt-2">Checkout</h2>
+            <h6 class="section__subtitle mt-3">Order Confirmation and delivery.</h6>
 
-            <div class="row">
+            <div class="row mt-5">
                 <div class="col-md-7 col-lg-7 pt-2 checkout_card">
-                    <a href="{% url 'cart' %}" class="btn btn-outline-dark">&#x2190; Back to Cart</a>
+                    <a href="{% url 'cart' %}" class="btn btn-outline-secondary">&#x2190; Back to Cart</a>
 
                     <hr>
 
@@ -41,7 +42,7 @@
                         </tr>
                         {% endfor %}
                     </table>
-                    <h6><strong>Grand Total: ksh {{ order.get_cart_total|floatformat:2}}</strong></h6>
+                    <h6 class="text-center"><strong>Grand Total: ksh {{ order.get_cart_total|floatformat:2}}</strong></h6>
 
                 </div>
 

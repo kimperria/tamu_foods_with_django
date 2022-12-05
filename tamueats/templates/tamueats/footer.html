@@ -3,12 +3,12 @@
 <html>
     <head>
         {% block styles %}
-            <link rel="stylesheet" href="style.css">
+        <link rel="stylesheet" type="text/css" href="{% static '/css/footer.css' %}">
         {% endblock %}
     </head>
     <body>
         <footer>
-            <section class="company__information section">
+            <section class="container container-fluid company__information section">
                 <div class="row">
                     <div class="col-sm-12 col-md-4 col-lg-4">
                         <div class="contact__information">
@@ -65,11 +65,11 @@
                 </div>
             </section>
         
-            <section class="developer__section">
+            <section class="container container-fluid developer__section">
                 <div class="d-flex justify-content-around">
                     <div class="footer__copy">
                         <ul class="nav justify-content-around">
-                            <li class="nav-item">
+                            <li class="nav-item dev-link">
                                 <a class="nav-link" href="https://twitter.com/kimperria">Twitter</a>
                             </li>
         

@@ -11,15 +11,16 @@
     </head>
     <body>
         {% block content %}
-        <div class="menu">
+        <div class="container menu">
             <h2 class="section__title mt-2">Menu</h2>
+            <h6 class="section__subtitle mt-3">Range of delicious and healthy food items.</h6>
             <div class="row mt-3">
                 {% for item in menu %}
-                <div class="col-sm-12 col-md-4 col-lg-4 mt-1">
+                <div class="col-sm-12 col-md-4 col-lg-4 mt-4">
                     <div class="card">
                         <div class="card-body">
                             <img class="card-img-top img-thumbnail img-fluid" src="{{ item.food_image}}" alt="Food image cap">
-                            <h5 class="card-title text-center">{{ item.food_name}}</h5>
+                            <h5 class="card-title text-center food_name">{{ item.food_name}}</h5>
                             <div class="items">
                                 <p><strong>Description: </strong>{{ item.food_description}}</p>
                                 <p><strong>Price: </strong>{{ item.food_unit_price }}</p>
@@ -28,12 +29,12 @@
                                 <div class="col-md-6">
                                     <!-- <a href="" class="btn ">View Product</a> -->
                                     <!-- Button trigger modal -->
-                                    <button type="button" class="btn btn-outline-secondary" data-toggle="modal" data-target="#exampleModalCenter">
+                                    <button type="button" class="btn btn-outline-secondary" data-toggle="modal" data-target="#pic{{item.id}}"">
                                         View Product
                                     </button>
                                     
                                     <!-- Modal -->
-                                    <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+                                    <div class="modal fade" id="pic{{item.id}}"" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
                                         <div class="modal-dialog modal-dialog-centered" role="document">
                                         <div class="modal-content">
                                             <div class="modal-header">
@@ -47,22 +48,23 @@
 
                                                 <p><strong>Description: </strong>{{ item.food_description}}</p>
                                                 <p><strong>Price: </strong>{{ item.food_unit_price }}</p>
+                                                <button data-item="{{ item.id }}" data-action="add" class="btn update-cart add_to_cart_button" style="width: 100%;">Add to cart</button>
                                             </div>
-                                            <div class="modal-footer">
-                                                Vendor Name
+                                            <div class="card-footer border-top">
+                                                <small>Made with love from: <span class="vendor_name">Rachael's Kitchen</span></small>
                                             </div>
                                         </div>
                                         </div>
                                     </div>
                                 </div>
                                 <div class="col-md-6">
-                                    <button data-item="{{ item.id }}" data-action="add" class="btn btn-outline-primary update-cart">Add to cart</button>
+                                    <button data-item="{{ item.id }}" data-action="add" class="btn update-cart add_to_cart_button">Add to cart</button>
                                 </div>
                             </div>
                         </div>
     
                         <div class="card-footer border-top">
-                            <small>Made with love from: Rachael's Kitchen</small>
+                            <small>Made with love from: <span class="vendor_name">Rachael's Kitchen</span></small>
                         </div>
                     </div>
                 </div>

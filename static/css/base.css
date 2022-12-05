@@ -16,6 +16,8 @@
   --text-color: hsl(var(--hue), var(--sat), 46%);
   --body-color: hsl(var(--hue), var(--sat), 98%);
   --container-color: #fff;
+  --primary-color-project: #FBC144;
+  --secondary-color-project: #3A856B;
 
   /*========== Font and typography ==========*/
   --body-font: "Poppins", sans-serif;
@@ -93,17 +95,16 @@
   a {
     text-decoration: none;
   }
+  /* footer{
+    background-color: black;
+    color: white;
+  } */
 
-  button {
-    cursor: pointer;
-    border: none;
-    outline: none;
-  }
+  /* .dev-link > a{
+    color: white;
+    text-decoration: underline;
+  } */
 
-  img {
-    max-width: 100%;
-    height: auto;
-  }
 
 /*=============== REUSABLE CSS CLASSES ===============*/
 .section {
@@ -112,7 +113,11 @@
 
 .section__title {
   font-size: var(--h1-font-size);
-  color: var(--title-color);
+  color: var(--primary-color-project);
+}
+
+.section__subtitle{
+  color: var(--secondary-color-project);
 }
 
 .section__title,
@@ -120,28 +125,38 @@
   text-align: center;
 }
 
-.button {
-  display: inline-block;
-  /* background-color: var(--title-color); */
-  /* color: var(--container-color); */
-  padding: 1.25rem 2rem;
-  border-radius: 1rem;
-  font-weight: var(--font-medium);
+.button{
+  outline: 1px solid var(--secondary-color-project);
+  color: var(--primary-color-project);
 }
 
-/* .button:hover {
-  background-color: var(--title-color-dark);
-} */
-
-.button__icon {
-  margin-left: var(--mb-0-5);
+.food_name{
+  color:var(--secondary-color-project);
 }
 
-.button--flex {
-  align-items: center;
-  display: inline-flex;
+.add_to_cart_button{
+  color: var(--secondary-color-project);
+  background-color: none !important;
+  outline: 1px solid var(--primary-color-project) !important;
+  letter-spacing: 1px;
 }
 
+.button :hover{
+  outline: 1px solid var(--primary-color-project);
+  /* color: var(--secondary-color-project) !important; */
+  color: red;
+}
+
+.card-footer {
+  background-color: var(--primary-color-project);
+  color: var(--container-color);
+}
+
+.vendor_name{
+  color: var(--secondary-color-project);
+  font-size: var(--normal-font-size);
+  font-weight: var(--font-semi-bold);
+}
 .grid {
   display: grid;
   gap: 1.5rem;
@@ -150,19 +165,7 @@
 /*=============== BREAKPOINTS ===============*/
 /* For large devices */
 @media screen and (max-width: 992px) {
-  /* .container {
-    margin-left: var(--mb-1-5);
-    margin-right: var(--mb-1-5);
-  } */
 
-  .button {
-    padding: 1rem 1.75rem;
-  }
-
-  .button__icon {
-    width: 22px;
-    height: 22px;
-  }
 }
 
 /* For medium devices */

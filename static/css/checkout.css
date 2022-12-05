@@ -5,8 +5,17 @@
 .checkout_card{
     box-shadow: hsl(0, 0%, 80%) 0 0 16px;
     /* border: 2px solid red; */
+    /* background-color: var(--primary-color-project); */
+    /* color: white; */
+    /* box-shadow: -5px -5px 10px rgba(255, 255, 255, 0.5),
+    2px 2px 5px rgba(94, 104, 121, 0.3); */
 }
 
 .cart__table{
     margin-bottom: 2rem;
 }
+
+/* .back_to_cart-btn{
+    color: white;
+    outline: 1px solid white;
+} */

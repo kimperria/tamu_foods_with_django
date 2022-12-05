@@ -12,11 +12,12 @@
     </head>
     <body>
         {% block content %}
-        <div class="menu">
+        <div class="container container-fluid">
             <h2 class="section__title mt-2">Cart</h2>
-                <div class="row cart_header">
-                    <div class="col-lg-12 pt-3">
-                        <a href="{% url 'MenuPage' %}" class="btn btn-outline-dark">&#x2190; Continue Shopping</a>
+            <h6 class="section__subtitle">Process your order.</h6>
+                <div class="row cart_header mt-5">
+                    <div class="col-lg-12 mt-3 pt-3">
+                        <a href="{% url 'MenuPage' %}" class="btn btn-outline-secondary">&#x2190; Continue Shopping</a>
                         <hr>
 
                         <table class="cart__table" style=" width: 100%;">
@@ -29,7 +30,7 @@
                                 </th>
                                 <th>
                                     <!-- checkout -->
-                                    <a href="{% url 'checkout' %}" class="btn btn-success" style="float: right; margin: 5px;">Checkout</a>
+                                    <a href="{% url 'checkout' %}" class="btn checkout_button" style="float: right; margin: 5px;">Proceed to checkout</a>
                                 </th>
                             </tr>
                         </table>

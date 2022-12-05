@@ -13,136 +13,138 @@
     </head>
     <body>
         {% block content %}
-        {% if user.is_authenticated %}
-                {% if status == 'P' %}
-                <div class="row justify-content-md-center notice mt-3">
-                    <div class="col card">
-                        <h3 class="section-subtitle text-center">Important Notice</h3>
+        <div class="container container-fluid">
+            {% if user.is_authenticated %}
+            {% if status == 'P' %}
+            <div class="row justify-content-md-center notice mt-3">
+                <div class="col card">
+                    <h3 class="section-subtitle text-center">Important Notice</h3>
+                    <div class="card-body">
+                        <h5>Dear Merchant,</h5>
+                        <p>Thank you <strong>{{ user.username }}</strong> for registering with us as a merchant partner. <br>
+                        Your account is currently under review by our management. Once approved to login as a vendor and set up your business.
+                            <br>
+                        In the mean time, please provide us with the requested information to help us get to know you better.
+                        </p>
+                        <h6>Kind regards, </h6>
+                        <small>System Admin.</small>
+                    </div>
+                </div>
+            </div>
+            <div class="row justify-content-md-center profile__section mt-2">
+                <div class="col-sm-12 col-md-8 col-lg-6">
+                    <div class="card pt-3">
+                        <div class="row justify-content-md-center mt-1">
+                            <div class="col col-lg-2">
+                                <!-- empty -->
+                            </div>
+                            <div class="col-md-auto">
+                                <img src="{{ user.profile_photo.url }}" 
+                                    alt="{{ user.username }} Profile Image" 
+                                    class="rounded-circle img-fluid img-thumbnail card-imf-top"
+                                    style="height: 200px; width:200px;">
+                            </div>
+                            <div class="col col-lg-2">
+                                <!-- empty -->
+                            </div>
+                        </div>
                         <div class="card-body">
-                            <h5>Dear Merchant,</h5>
-                            <p>Thank you <strong>{{ user.username }}</strong> for registering with us as a merchant partner. <br>
-                            Your account is currently under review by our management. Once approved to login as a vendor and set up your business.
-                                <br>
-                            In the mean time, please provide us with the requested information to help us get to know you better.
-                            </p>
-                            <h6>Kind regards, </h6>
-                            <small>System Admin.</small>
-                        </div>
-                    </div>
-                </div>
-                <div class="row justify-content-md-center profile__section mt-2">
-                    <div class="col-sm-12 col-md-8 col-lg-6">
-                        <div class="card pt-3">
-                            <div class="row justify-content-md-center mt-1">
-                                <div class="col col-lg-2">
-                                    <!-- empty -->
-                                </div>
-                                <div class="col-md-auto">
-                                    <img src="{{ user.profile_photo.url }}" 
-                                        alt="{{ user.username }} Profile Image" 
-                                        class="rounded-circle img-fluid img-thumbnail card-imf-top"
-                                        style="height: 200px; width:200px;">
-                                </div>
-                                <div class="col col-lg-2">
-                                    <!-- empty -->
-                                </div>
-                            </div>
-                            <div class="card-body">
-                                <div class="card-title">
-                                    <p><strong>Company Name: </strong>{{ user.merchant.merchant_name }}</p>
-                                    <p><strong>Email Address: </strong>{{ user.email }}</p>
-                                    <p><strong>Company Description: </strong> {{ user.merchant.merchant_description }}</p>
-                                </div>
+                            <div class="card-title">
+                                <p><strong>Company Name: </strong>{{ user.merchant.merchant_name }}</p>
+                                <p><strong>Email Address: </strong>{{ user.email }}</p>
+                                <p><strong>Company Description: </strong> {{ user.merchant.merchant_description }}</p>
                             </div>
                         </div>
                     </div>
-                    <div class="col-sm-12 col-md-4  col-lg-6 card update__profile">
-                        <form method="POST" action="" class="mt-2">
-                            {% csrf_token %}
-                            <fieldset class="form-group">
-                                <h4 class="section__subtitle">Tell Us more about what you do</h4>
-                                {{ merchant_form|crispy }}
-                                {{ user_profile_pic_form|crispy }}
-                            </fieldset>
-                            <div class="form-group">
-                                <button class="btn btn-outline-primary"
-                                        style="width: 100%;">Update</button>
-                            </div>
-                        </form>
-                    </div>
-    
                 </div>
-                {% elif status == 'A' %}
-                <div class="row justify-content-md-center profile__section mt-2">
-                    <div class="col-sm-12 col-md-8 col-lg-6">
-                        <div class="card pt-3">
-                            <div class="row justify-content-md-center mt-1">
-                                <div class="col col-lg-2">
-                                    <!-- empty -->
-                                </div>
-                                <div class="col-md-auto">
-                                    <img src="{{ user.profile_photo.url }}" 
-                                        alt="{{ user.username }} Profile Image" 
-                                        class="rounded-circle img-fluid img-thumbnail card-imf-top"
-                                        style="height: 200px; width:200px;">
-                                </div>
-                                <div class="col col-lg-2">
-                                    <!-- empty -->
-                                </div>
+                <div class="col-sm-12 col-md-4  col-lg-6 card update__profile">
+                    <form method="POST" action="" class="mt-2">
+                        {% csrf_token %}
+                        <fieldset class="form-group">
+                            <h4 class="section__subtitle">Tell Us more about what you do</h4>
+                            {{ merchant_form|crispy }}
+                            {{ user_profile_pic_form|crispy }}
+                        </fieldset>
+                        <div class="form-group">
+                            <button class="btn btn-outline-primary"
+                                    style="width: 100%;">Update</button>
+                        </div>
+                    </form>
+                </div>
+
+            </div>
+            {% elif status == 'A' %}
+            <div class="row justify-content-md-center profile__section mt-2">
+                <div class="col-sm-12 col-md-8 col-lg-6">
+                    <div class="card pt-3">
+                        <div class="row justify-content-md-center mt-1">
+                            <div class="col col-lg-2">
+                                <!-- empty -->
                             </div>
-                            <div class="card-body">
-                                <div class="card-title">
-                                    <p><strong>Company Name: </strong>{{ user.merchant.merchant_name }}</p>
-                                    <div class="row">
-                                        <div class="col">
-                                            <p><strong>Email Address: </strong>{{ user.email }}</p>
-                                        </div>
-                                        <!-- <div class="col">
-                                            <p><strong>Location: </strong> {{ user.vendor.location }}</p>
-                                        </div> -->
+                            <div class="col-md-auto">
+                                <img src="{{ user.profile_photo.url }}" 
+                                    alt="{{ user.username }} Profile Image" 
+                                    class="rounded-circle img-fluid img-thumbnail card-imf-top"
+                                    style="height: 200px; width:200px;">
+                            </div>
+                            <div class="col col-lg-2">
+                                <!-- empty -->
+                            </div>
+                        </div>
+                        <div class="card-body">
+                            <div class="card-title">
+                                <p><strong>Company Name: </strong>{{ user.merchant.merchant_name }}</p>
+                                <div class="row">
+                                    <div class="col">
+                                        <p><strong>Email Address: </strong>{{ user.email }}</p>
                                     </div>
-                                    <p><strong>Company Description: </strong> {{ user.merchant.merchant_description }}</p>
+                                    <!-- <div class="col">
+                                        <p><strong>Location: </strong> {{ user.vendor.location }}</p>
+                                    </div> -->
                                 </div>
+                                <p><strong>Company Description: </strong> {{ user.merchant.merchant_description }}</p>
                             </div>
                         </div>
                     </div>
-                    <div class="col-sm-12 col-md-4  col-lg-6 card update__profile">
-                        <form method="POST" action="" class="mt-2">
-                            {% csrf_token %}
-                            <fieldset class="form-group">
-                                <h4 class="section__subtitle">Tell Us more about what you do</h4>
-                                {{ merchant_form|crispy }}
-                                {{ user_profile_pic_form|crispy }}
-                            </fieldset>
-                            <div class="form-group">
-                                <button class="btn btn-outline-primary"
-                                        style="width: 100%;">Update</button>
-                            </div>
-                        </form>
-                    </div>
-    
                 </div>
-                {% elif status == 'R' %}
-                <div class="row justify-content-md-center notice mt-3">
-                    <div class="col-md-8 card">
-                        <h3 class="section-subtitle text-center">Important Notice</h3>
-                        <div class="card-body">
-                            <h5>Dear {{user.username}},</h5>
-                            <p>Your merchant status has been temporarily revoked. <br>
-                            Your account is currently under review by our management.                                 <br>
-                            In case of further assistance reach out to the management.
-                            </p>
-                            <h6>Sincere apologies, </h6>
-                            <small>System Admin.</small>
+                <div class="col-sm-12 col-md-4  col-lg-6 card update__profile">
+                    <form method="POST" action="" class="mt-2">
+                        {% csrf_token %}
+                        <fieldset class="form-group">
+                            <h4 class="section__subtitle">Tell Us more about what you do</h4>
+                            {{ merchant_form|crispy }}
+                            {{ user_profile_pic_form|crispy }}
+                        </fieldset>
+                        <div class="form-group">
+                            <button class="btn btn-outline-primary"
+                                    style="width: 100%;">Update</button>
                         </div>
+                    </form>
+                </div>
+
+            </div>
+            {% elif status == 'R' %}
+            <div class="row justify-content-md-center notice mt-3">
+                <div class="col-md-8 card">
+                    <h3 class="section-subtitle text-center">Important Notice</h3>
+                    <div class="card-body">
+                        <h5>Dear {{user.username}},</h5>
+                        <p>Your merchant status has been temporarily revoked. <br>
+                        Your account is currently under review by our management.                                 <br>
+                        In case of further assistance reach out to the management.
+                        </p>
+                        <h6>Sincere apologies, </h6>
+                        <small>System Admin.</small>
                     </div>
                 </div>
-                {% else %}
-                <p>I dont know why it isnt working</p>
-                {% endif %}
-        {% else %}
-            <p>Not authenicated</p>
-        {% endif %}
+            </div>
+            {% else %}
+            <p>I dont know why it isnt working</p>
+            {% endif %}
+    {% else %}
+        <p>Not authenicated</p>
+    {% endif %}
+        </div>
         {% endblock %}
     </body>
 </html>

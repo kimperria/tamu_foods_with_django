@@ -149,7 +149,10 @@ class FoodOrderItem(models.Model):
         total = self.food_product.food_unit_price * self.quantity
         return total
 
-
+class DeliverOrder(models.Model):
+    pickUpPerson = models.CharField(max_length=255)
+    apartment = models.CharField(max_length=100, null=True, blank=True)
+    location = models.CharField(max_length=100, null=True)
 class Cart(models.Model):
     '''
      Class that handles cart operations

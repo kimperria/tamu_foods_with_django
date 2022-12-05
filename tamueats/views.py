@@ -1,8 +1,9 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from django.http import HttpResponse, JsonResponse
 import json
 
 from .models import FoodProduct, Customer, FoodOrder, FoodOrderItem
+from .forms import DeliverOrderForm
 
 def index(request):
     '''
@@ -80,21 +81,36 @@ def cart_page(request):
 
 def checkout_page(request):
 
+    system_message = None
+
     if request.user.is_authenticated:
         customer = request.user.customer
         order, created = FoodOrder.objects.get_or_create(customer=customer, payment_status='P')
         items = order.foodorderitem_set.all()
         cartItems = order.get_cart_items
+        if request.method == 'POST':
+            delivery_form = DeliverOrderForm(request.POST)
+            if delivery_form.is_valid():
+                drop_location = delivery_form.save()
+                print(drop_location)
+                return redirect('customer-dashboard')
+        else:
+            system_message = ''
+            delivery_form = DeliverOrderForm()
+
     else:
         items = []
         order = {"get_cart_total": 0, "get_cart_items":0}
         cartItems = order['get_cart_items']
+        delivery_form = DeliverOrderForm()
     
         
     context = {
         'items':items,
         'order': order,
-        'cartItems':cartItems
+        'cartItems':cartItems,
+        'form': delivery_form,
+        'systemMessage': system_message
     }
 
     return render(request, 'tamueats/checkout.html', context)

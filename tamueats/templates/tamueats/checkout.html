@@ -3,6 +3,7 @@
         {% extends 'tamueats/base.html'%}
         {% load static %}
         {% load bootstrap4 %}
+        {% load crispy_forms_tags %}
 
         {% block styles %}
         {% bootstrap_css %}
@@ -17,15 +18,22 @@
             <h6 class="section__subtitle mt-3">Order Confirmation and delivery.</h6>
 
             <div class="row mt-5">
-                <div class="col-md-7 col-lg-7 pt-2 checkout_card">
-                    <a href="{% url 'cart' %}" class="btn btn-outline-secondary">&#x2190; Back to Cart</a>
+                <div class="col-md-12 col-lg-12 pt-2 checkout_card">
+                    <div class="d-flex justify-content-around">
+                        <a href="{% url 'cart' %}" class="btn btn-outline-secondary">&#x2190; Back to Cart</a>
+
+                        <!-- Button trigger modal -->
+                        <a type="button" class="btn deliver_button" data-toggle="modal" data-target="#exampleModalCenter">
+                            Delivery to my Location
+                        </a>
+                    </div>
 
                     <hr>
 
-                    <h3 class="text-center">Order Summary</h>
+                    <h3 class="text-center order">Order Summary</h>
 
                     <table class="cart__table" style=" width: 100%;">
-                        <tr>
+                        <tr class="table__row">
                             <th></th>
                             <th>Food</th>
                             <th>Quantity</th>
@@ -43,11 +51,33 @@
                         {% endfor %}
                     </table>
                     <h6 class="text-center"><strong>Grand Total: ksh {{ order.get_cart_total|floatformat:2}}</strong></h6>
+                        
+                        <!-- Modal -->
+                        <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+                            <div class="modal-dialog modal-dialog-centered" role="document">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                <legend class="text-center legend">Delivery Form</legend>
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                                </div>
+                                <div class="modal-body">
+                                    <form action="" method="POST">
+                                        {% csrf_token %}
+                                        <fieldset class="form-group">
+                                            {{ systemMessage }}
+                                            {{form|crispy}}
+                                        </fieldset>
+                                        <div class="form-group">
+                                            <button class="btn deliver_button" style="width: 100%;">Initiate Delivery</button>
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+                            </div>
+                        </div>
 
-                </div>
-
-                <div class="col-md-4 col-lg-4 checkout_card">
-                    <p>Delivery</p>
                 </div>
             </div>
         </div>

@@ -15,6 +15,30 @@
     margin-bottom: 2rem;
 }
 
+.legend{
+    font-size: var(--normal-font-size);
+    font-weight: var(--font-semi-bold);
+}
+
+
+.deliver_button{
+    color: var(--secondary-color-project);
+    background-color: none !important;
+    outline: 1px solid var(--primary-color-project) !important;
+    letter-spacing: 1px;
+}
+
+.order{
+    color: var(--secondary-color-project);
+}
+.table__row{
+    color: var(--secondary-color-project);
+}
+
+.delivery__form{
+    display: hide;
+}
+
 /* .back_to_cart-btn{
     color: white;
     outline: 1px solid white;

@@ -68,8 +68,8 @@
                                 <td class="quantity">
                                     <p>{{ item.quantity }}</p>
                                     <div>
-                                        <img class="change_quantity" src="{% static 'assets/arrow_up.png' %}" alt="">
-                                        <img class="change_quantity" src="{% static 'assets/arrow_down.png' %}" alt="">
+                                        <img data-item="{{ item.food_product.id }}" data-action="add" class="change_quantity update-cart" src="{% static 'assets/arrow_up.png' %}" alt="">
+                                        <img data-item="{{ item.food_product.id }}" data-action="remove" class="change_quantity update-cart" src="{% static 'assets/arrow_down.png' %}" alt="">
                                     </div>
                                 </td>
                                 <td>

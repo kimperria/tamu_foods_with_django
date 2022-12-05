@@ -8,14 +8,17 @@ def index(request):
     '''
     Function view to display home page
     '''
-
-    if request.user.is_authenticated:
-        customer = request.user.customer
-        order, created = FoodOrder.objects.get_or_create(customer=customer, payment_status='P')
-        items = order.foodorderitem_set.all()
-        cartItems = order.get_cart_items
-    else:
-        items = []
+    try:
+        if request.user.is_authenticated:
+            customer = request.user.customer
+            order, created = FoodOrder.objects.get_or_create(customer=customer, payment_status='P')
+            items = order.foodorderitem_set.all()
+            cartItems = order.get_cart_items
+        else:
+            items = []
+            order = {"get_cart_total": 0, "get_cart_items":0}
+            cartItems = order['get_cart_items']
+    except:
         order = {"get_cart_total": 0, "get_cart_items":0}
         cartItems = order['get_cart_items']
     

@@ -10,6 +10,7 @@ for( var i = 0; i < updateBtns.length; i++){
         console.log('USER: ', user)
         if (user === 'AnonymousUser'){
             console.log('Not logged in')
+            alert('Please create a customer account to shop with us')
         }else {
             console.log('User is logged in, sending data..')
             updateUserOrder(itemId, action)

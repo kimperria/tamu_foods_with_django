@@ -1,0 +1,262 @@
+/* ============= GOOGLE FONTS ============= */
+
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap');
+
+/* ============= VARIABLE CSS ============= */
+
+* {
+  --header-height: 3rem;
+
+  /*========== Colors ==========*/
+  /*Color mode HSL(hue, saturation, lightness)*/
+  --hue: 0;
+  --sat: 0%;
+  --title-color: hsl(var(--hue), var(--sat), 20%);
+  --title-color-dark: hsl(var(--hue), var(--sat), 0%);
+  --text-color: hsl(var(--hue), var(--sat), 46%);
+  --body-color: hsl(var(--hue), var(--sat), 98%);
+  --container-color: #fff;
+  --primary-color-project: #FBC144;
+  --secondary-color-project: #3A856B;
+
+  /*========== Font and typography ==========*/
+  --body-font: "Poppins", sans-serif;
+
+  /*.5rem = 8px | 1rem = 16px ...*/
+  --big-font-size: 3.5rem;
+  --h1-font-size: 2.25rem;
+  --h2-font-size: 1.5rem;
+  --h3-font-size: 1.25rem;
+  --normal-font-size: 1rem;
+  --small-font-size: 0.875rem;
+  --smaller-font-size: 0.813rem;
+  --tiny-font-size: 0.625rem;
+
+  /*========== Font weight ==========*/
+  --font-normal: 400;
+  --font-medium: 500;
+  --font-semi-bold: 600;
+
+  /*========== Margenes Bottom ==========*/
+  /*.5rem = 8px | 1rem = 16px ...*/
+  --mb-0-25: 0.25rem;
+  --mb-0-5: 0.5rem;
+  --mb-0-75: 0.75rem;
+  --mb-1: 1rem;
+  --mb-1-5: 1.5rem;
+  --mb-2: 2rem;
+  --mb-2-5: 2.5rem;
+  --mb-3: 3rem;
+
+  /*========== z index ==========*/
+  --z-tooltip: 10;
+  --z-fixed: 100;
+  --z-modal: 1000;
+}
+
+/* Responsive typography */
+@media screen and (max-width: 992px) {
+    * {
+      --big-font-size: 2.75rem;
+      --h1-font-size: 1.5rem;
+      --h2-font-size: 1.25rem;
+      --h3-font-size: 1rem;
+      --normal-font-size: 0.938rem;
+      --small-font-size: 0.813rem;
+      --smaller-font-size: 0.75rem;
+    }
+  }
+
+
+  /* =============== BASE ================= */
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body,
+  input,
+  textarea {
+    font-family: var(--body-font);
+    font-size: var(--normal-font-size);
+  }
+
+  h1, 
+  h2,
+  h3 {
+    color: var(--title-color);
+    font-weight: var(--font-semi-bold);
+  }
+
+  ul {
+    list-style: none;
+  }
+
+  a {
+    text-decoration: none;
+  }
+
+ .navigation-bar{
+  background-color: var(--primary-color-project);
+  font-weight: var(--font-medium);
+ }
+
+ .navbar-toggler{
+  background-color: var(--secondary-color-project);
+  color: white;
+ }
+
+
+ .tamu-logo{
+  color: var(--container-color);
+  font-weight: var(--font-semi-bold);
+ }
+
+ .foods-logo{
+  color: var(--secondary-color-project);
+  font-weight: var(--font-semi-bold);
+ }
+
+ .hero__section{
+  background-image: url(/static/assets/pork_ribs.jpg);
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  color: var(--container-color);
+ }
+
+ .header-home{
+  color: var(--container-color);
+  font-size: var(--h1-font-size);
+ }
+
+ .header-body{
+  font-weight: var(--font-semi-bold);
+  font-size: var(--h3-font-size);
+ }
+ .header-description{
+  font-size: var(--h3-font-size);
+  font-weight: var(--font-medium);
+ }
+
+
+/*=============== REUSABLE CSS CLASSES ===============*/
+.section {
+  padding: 6rem 0 2rem;
+}
+
+.section__title {
+  font-size: var(--h1-font-size);
+  color: var(--primary-color-project);
+}
+
+.section__subtitle{
+  color: var(--secondary-color-project);
+}
+
+.section__title,
+.section__subtitle {
+  text-align: center;
+}
+
+.steps{
+    box-shadow: -5px -5px 10px rgba(255, 255, 255, 0.5),
+    2px 2px 5px rgba(94, 104, 121, 0.3);
+}
+
+.steps_header{
+  color: var(--primary-color-project);
+  text-align: center;
+}
+
+.steps_sub-header{
+  color: var(--secondary-color-project);
+  font-size: var(--small-font-size);
+  text-align: center;
+}
+
+.about_us > h5{
+  text-align: center;
+  color: var(--primary-color-project);
+  font-size: var(--h3-font-size);
+  font-weight: var(--font-semi-bold);
+}
+
+.reg-link{
+  font-size: var(--small-font-size);
+  color: var(--secondary-color-project);
+}
+
+.button{
+  outline: 1px solid var(--secondary-color-project);
+  color: var(--primary-color-project);
+}
+
+.food_name{
+  color:var(--secondary-color-project);
+}
+
+.add_to_cart_button{
+  color: var(--secondary-color-project);
+  background-color: none !important;
+  outline: 1px solid var(--primary-color-project) !important;
+  letter-spacing: 1px;
+}
+
+.button :hover{
+  outline: 1px solid var(--primary-color-project);
+  /* color: var(--secondary-color-project) !important; */
+  color: red;
+}
+
+.card-footer {
+  background-color: var(--primary-color-project);
+  color: var(--container-color);
+}
+
+.vendor_name{
+  color: var(--secondary-color-project);
+  font-size: var(--normal-font-size);
+  font-weight: var(--font-semi-bold);
+}
+.grid {
+  display: grid;
+  gap: 1.5rem;
+}
+
+/*=============== BREAKPOINTS ===============*/
+/* For large devices */
+@media screen and (max-width: 992px) {
+
+}
+
+/* For medium devices */
+@media screen and (max-width: 768px) {
+  body {
+    margin: 0 0 var(--header-height) 0;
+  }
+  .hero__section{
+    height: 80vh;
+  }
+
+
+
+  /* .section {
+    padding: 2rem 0 4rem;
+  } */
+
+  .section__subtitle {
+    margin-bottom: var(--mb-3);
+  }
+}
+
+@media screen and (max-width: 576px) {
+
+}
+
+/* For small devices */
+@media screen and (max-width: 350px) {
+  * {
+    --big-font-size: 2.25rem;
+  }
+}

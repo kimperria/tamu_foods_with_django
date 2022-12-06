@@ -1,0 +1,29 @@
+.profile__section{
+  margin-top: 1.8rem;
+}
+
+.update__button{
+  width: 100%;
+  color: var(--secondary-color-project);
+  background-color: none !important;
+  outline: 1px solid var(--primary-color-project) !important;
+  letter-spacing: 1px;
+}
+
+/* .update__profile{
+  border: 2px solid red;
+} */
+
+@media screen and (max-width: 576px) {
+  .profile__section{
+    margin-top: 0.8rem;
+  }
+}
+
+/* For small devices */
+@media screen and (max-width: 350px) {
+
+  .profile__section{
+    margin-top: 0.8rem;
+  }
+}

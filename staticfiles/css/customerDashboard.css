@@ -1,0 +1,16 @@
+.customer__dashboard-table{
+    width: 100%;
+    text-align: center;
+}
+
+.table__name{
+    color: var(--secondary-color-project);
+    font-size: var(--normal-font-size);
+}
+
+.card-header {
+    background-color: var(--secondary-color-project);
+    color: var(--container-color);
+    text-align: center;
+    font-size: var(--h3-font-size);
+}

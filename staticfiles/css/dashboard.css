@@ -1,0 +1,47 @@
+.dashboard_toolbar{
+    text-align: center;
+}
+
+.dashboard_toolbar > h2{
+    color: var(--secondary-color-project);
+}
+
+.update__button{
+    width: 100%;
+    color: var(--secondary-color-project);
+    background-color: none !important;
+    outline: 1px solid var(--primary-color-project) !important;
+    letter-spacing: 1px;
+}
+
+
+.manage__button{
+    color: var(--secondary-color-project);
+    background-color: none !important;
+    outline: 1px solid var(--primary-color-project) !important;
+    letter-spacing: 1px;
+}
+
+.view__button{
+    color: var(--primary-color-project);
+    background-color: none !important;
+    outline: 1px solid var(--primary-color-project) !important;
+    letter-spacing: 1px;
+}
+
+.activities>.card-header{
+    background-color: var(--primary-color-project);
+    color: var(--container-color);
+}
+
+.header__title{
+    color: var(--primary-color-project);
+}
+
+.list-group-item > a {
+    color: var(--secondary-color-project);
+    text-decoration: underline;
+    font-weight: var(--h1-font-size);
+    letter-spacing: 2px;
+    text-align: center;
+}

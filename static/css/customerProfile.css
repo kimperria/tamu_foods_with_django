@@ -2,6 +2,14 @@
   margin-top: 1.8rem;
 }
 
+.update__button{
+  width: 100%;
+  color: var(--secondary-color-project);
+  background-color: none !important;
+  outline: 1px solid var(--primary-color-project) !important;
+  letter-spacing: 1px;
+}
+
 /* .update__profile{
   border: 2px solid red;
 } */

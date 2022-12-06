@@ -13,7 +13,7 @@ def register_customer_account(request):
     '''
         View function to handle customer registration
     '''
-    system_message = None
+    system_message = ''
 
     if request.method == 'POST':
         form = UserRegistrationForm(request.POST)
@@ -77,7 +77,7 @@ def register_non_customer_account(request):
     View function to hanlde non customer accounts registration
     i.e vendor and merchant A/C
     '''
-    system_message = None
+    system_message = ''
 
     if request.method == 'POST':
         form = NonCustomerRegistrationForm(request.POST)
@@ -107,7 +107,7 @@ def login_account(request):
     '''
         View function to handle user authentication
     '''
-    system_message = None
+    system_message = ''
     form = LoginForm(request.POST or None)
     if request.method == 'POST':
         if form.is_valid():

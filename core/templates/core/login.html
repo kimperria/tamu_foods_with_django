@@ -25,11 +25,11 @@
                                 {{ form|crispy }}
                             </fieldset>
                             <div class="form-group">
-                                <button class="btn btn-outline-primary auth__form-btn" type="submit">LogIn</button>
+                                <button class="btn auth__form-btn" type="submit">LogIn</button>
                             </div>
                         </form>
                         <div class="pt-2 border-top text-center">
-                            <small>Register as  <a href="{% url 'SignUp' %}">customer</a> or <a href="{% url 'Register' %}">Vendor/Merchant</a></small>
+                            <small>Register as  <a href="{% url 'SignUp' %}" class="customer">customer</a> or <a href="{% url 'Register' %}" class="non-customer">Vendor/Merchant</a></small>
 
                         </div>
                     </div>

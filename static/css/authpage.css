@@ -14,9 +14,35 @@
 
 .auth__form-btn {
     width: 100%;
+    color: var(--secondary-color-project);
+    background-color: none !important;
+    outline: 1px solid var(--primary-color-project) !important;
+    letter-spacing: 1px;
 }
+
+.logout__button-login{
+    color: var(--secondary-color-project);
+    background-color: none !important;
+    outline: 1px solid var(--primary-color-project) !important;
+    letter-spacing: 1px;  
+}
+
+/* .logout-btn{
+    color: var(--secondary-color-project);
+    background-color: none !important;
+    outline: 1px solid var(--primary-color-project) !important;
+    letter-spacing: 1px;  
+} */
 
 .auth_redirect{
     font-size: var(--smaller-font-size);
     font-style: oblique;
+}
+
+
+.customer{
+    color: var(--primary-color-project);
+}
+.non-customer{
+    color: var(--secondary-color-project);
 }

@@ -39,6 +39,10 @@
     display: hide;
 }
 
+.complete-btn{
+    display: grid;
+    place-content: center;
+}
 /* .back_to_cart-btn{
     color: white;
     outline: 1px solid white;

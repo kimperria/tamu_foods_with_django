@@ -51,6 +51,7 @@
                         {% endfor %}
                     </table>
                     <h6 class="text-center"><strong>Grand Total: ksh {{ order.get_cart_total|floatformat:2}}</strong></h6>
+                    <div class="complete-btn mb-2"> <button class="btn btn deliver_button" id="complete-purchase">Complete Purchase</button></div>
                         
                         <!-- Modal -->
                         <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
@@ -63,14 +64,14 @@
                                 </button>
                                 </div>
                                 <div class="modal-body">
-                                    <form action="" method="POST">
+                                    <form  method="POST" id="delivery-form">
                                         {% csrf_token %}
                                         <fieldset class="form-group">
                                             {{ systemMessage }}
                                             {{form|crispy}}
                                         </fieldset>
                                         <div class="form-group">
-                                            <button class="btn deliver_button" style="width: 100%;">Initiate Delivery</button>
+                                            <button class="btn deliver_button" style="width: 100%;" id="complete-purchase">Initiate Delivery</button>
                                         </div>
                                     </form>
                                 </div>
@@ -81,6 +82,57 @@
                 </div>
             </div>
         </div>
+
+        <script type="text/javascript">
+
+            var form = document.getElementById('delivery-form')
+            form.addEventListener('submit', function(e){
+                e.preventDefault()
+                console.log('Form has been clicked')
+                submitFormData()
+            })
+
+            var total = "{{order.get_cart_total}}"
+            document.getElementById('complete-purchase').addEventListener('click', function(e){
+                submitFormData()
+            })
+
+            function submitFormData(){
+                console.log('Complete btn clicked')
+                var userFormData = {
+                    'name': user,
+                    'total': total
+                }
+
+                var deliveryInformation = {
+                    'pickUpPerson': form.pickUpPerson.value,
+                    'apartment': form.apartment.value,
+                    'location': form.location.value,
+                }
+
+
+                var url = '/process_order/'
+                fetch(url, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'X-CSRFToken':csrftoken,
+                    },
+                    body:JSON.stringify({'form':userFormData, 'deliveryForm':deliveryInformation})
+                })
+                .then(
+                    (response) => response.json()
+                ).then(
+                    (data) => {
+                        console.log('Success: ',data)
+                        console.log(user)
+                        alert('Transaction completed')
+                        window.location.href = "{% url 'customer-dashboard' %}"
+                    }
+                )
+
+            }
+        </script>
         {% endblock %}
     </body>
 </html>

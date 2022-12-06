@@ -101,6 +101,12 @@
   font-weight: var(--font-medium);
  }
 
+ .navbar-toggler{
+  background-color: var(--secondary-color-project);
+  color: white;
+ }
+
+
  .tamu-logo{
   color: var(--container-color);
   font-weight: var(--font-semi-bold);

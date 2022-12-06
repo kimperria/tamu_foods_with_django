@@ -16,8 +16,20 @@ A sequel and beta version of [Tamu-Foods](https://github.com/John-Kimani/Tamu-Fo
 
 ## About Project
 ---
+Development
+Framework
+Database
 ## Features
 ---
+1. MultiUser Roles, permission and authentication
+2. Custom profile interface. i.e user can update personal information
+3. e-Commerce shopping experience.
+
+#### Customer Role
+
+#### Vendor Role
+
+#### Merchant Role
 ## Technologies used
 ---
 ### Project illustations

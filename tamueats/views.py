@@ -4,6 +4,7 @@ import json
 
 from .models import FoodProduct, Customer, FoodOrder, FoodOrderItem
 from .forms import DeliverOrderForm
+import datetime
 
 def index(request):
     '''
@@ -140,6 +141,25 @@ def update_item(request):
         orderItem.delete()
     
     return JsonResponse("Item was added", safe=False)
+
+def processOrder(request):
+    print('Data', request.body)
+    data = json.loads(request.body)
+    transaction_id = datetime.datetime.now().timestamp()
+
+    if request.user.is_authenticated:
+        customer = request.user.customer
+        order, created = FoodOrder.objects.get_or_create(customer=customer, payment_status='P')
+        total = float(data['form']['total'])
+        print('Total', total)
+        order_transaction_id = transaction_id
+
+        if total == float(order.get_cart_total):
+            order.payment_status = 'C'
+            order.save()
+    else:
+        print('User is not logged in')
+    return JsonResponse("Payment Complete!", safe=False)
 
 def coming_soon(request):
     '''

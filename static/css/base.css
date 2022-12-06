@@ -95,15 +95,43 @@
   a {
     text-decoration: none;
   }
-  /* footer{
-    background-color: black;
-    color: white;
-  } */
 
-  /* .dev-link > a{
-    color: white;
-    text-decoration: underline;
-  } */
+ .navigation-bar{
+  background-color: var(--primary-color-project);
+  font-weight: var(--font-medium);
+ }
+
+ .tamu-logo{
+  color: var(--container-color);
+  font-weight: var(--font-semi-bold);
+ }
+
+ .foods-logo{
+  color: var(--secondary-color-project);
+  font-weight: var(--font-semi-bold);
+ }
+
+ .hero__section{
+  background-image: url(/static/assets/pork_ribs.jpg);
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  color: var(--container-color);
+ }
+
+ .header-home{
+  color: var(--container-color);
+  font-size: var(--h1-font-size);
+ }
+
+ .header-body{
+  font-weight: var(--font-semi-bold);
+  font-size: var(--h3-font-size);
+ }
+ .header-description{
+  font-size: var(--h3-font-size);
+  font-weight: var(--font-medium);
+ }
 
 
 /*=============== REUSABLE CSS CLASSES ===============*/
@@ -123,6 +151,34 @@
 .section__title,
 .section__subtitle {
   text-align: center;
+}
+
+.steps{
+    box-shadow: -5px -5px 10px rgba(255, 255, 255, 0.5),
+    2px 2px 5px rgba(94, 104, 121, 0.3);
+}
+
+.steps_header{
+  color: var(--primary-color-project);
+  text-align: center;
+}
+
+.steps_sub-header{
+  color: var(--secondary-color-project);
+  font-size: var(--small-font-size);
+  text-align: center;
+}
+
+.about_us > h5{
+  text-align: center;
+  color: var(--primary-color-project);
+  font-size: var(--h3-font-size);
+  font-weight: var(--font-semi-bold);
+}
+
+.reg-link{
+  font-size: var(--small-font-size);
+  color: var(--secondary-color-project);
 }
 
 .button{
@@ -173,6 +229,11 @@
   body {
     margin: 0 0 var(--header-height) 0;
   }
+  .hero__section{
+    height: 80vh;
+  }
+
+
 
   /* .section {
     padding: 2rem 0 4rem;
@@ -184,6 +245,7 @@
 }
 
 @media screen and (max-width: 576px) {
+
 }
 
 /* For small devices */

@@ -1,0 +1,36 @@
+{% load static %}
+<head>
+    {% block styles %}
+    <link rel="stylesheet" type="text/css" href="{% static '/css/base.css' %}">
+    {% endblock %}
+</head>
+
+<section class="container container-fluid">
+    <div class="row pt-5 pb-5">
+        <div class="col-sm-12 col-md-6 col-lg-6">
+            <div class="card">
+                <img src="{% static 'assets/tamufoods.png' %}" class="img-fluid img-thumbnail card-img" alt="">
+            </div>
+        </div>
+        <div class="col-sm-12 col-md-6 col-lg-6">
+            <div class="card">
+                <div class="card-body about_us">
+                    <h5 class="card-title">
+                        We are TamuFoods
+                    </h5>
+                    <p class="card-text">
+                        We're a Kenya tech company and promising Food Tech startup in East African Region.
+                        With technology at the core of our business, we create innovative business to business and business to consumer solutions by connecting customers, vendors and couries,
+                        whilst making sure we have a sustainable impact in out community and economy,
+                    </p>
+
+                    <h5>Mission</h5>
+                    <p class="card-text">Our platform enable users to order food items online from our partner <a href="{% url 'Register' %}" class="reg-link">vendors</a>.
+                        We seek to enable trade for individuals who love cooking i.e private chefs, catering students or other professionals who love cooking on spare time and not necessarily restaurants. 
+                    </p>
+                    <p class="card-text">
+                        Also, we are partnering with independent <a href="{% url 'Register' %}" class="reg-link">riders</a> to enable on location deliveries to our customers.
+                    </p>
+        </div>
+    </div>
+</section>

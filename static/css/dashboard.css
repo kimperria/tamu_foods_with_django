@@ -34,7 +34,9 @@
     color: var(--container-color);
 }
 
-
+.header__title{
+    color: var(--primary-color-project);
+}
 
 .list-group-item > a {
     color: var(--secondary-color-project);

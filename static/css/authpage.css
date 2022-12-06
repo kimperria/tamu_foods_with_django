@@ -10,6 +10,7 @@
 .auth_legend{
     font-weight: var(--font-medium);
     font-size: var(--h2-font-size);
+    color: var(--secondary-color-project);
 }
 
 .auth__form-btn {

@@ -1,0 +1,37 @@
+footer{
+    height: 40vh;
+    background-color: black;
+    color: var(--container-color);
+    padding-top: var(--mb-3);
+}
+
+.nav-link {
+    color: var(--container-color);
+    font-size: var(--small-font-size);
+}
+
+.info{
+    font-size: var(--smaller-font-size);
+}
+
+.version {
+    display: grid;
+    place-content: center;
+}
+
+
+.form-group> input{
+    width: 150%;
+    margin-left: -1rem;
+    height: 2.5rem;
+    outline: 1px solid white;
+    border: none;
+}
+
+.subscribe-btn{
+    margin-left: 3rem;
+    color: var(--secondary-color-project);
+    background-color: var(--primary-color-project);
+    outline: 1px solid var(--primary-color-project) !important;
+    letter-spacing: 1px;
+}

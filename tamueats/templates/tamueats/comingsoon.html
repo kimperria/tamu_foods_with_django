@@ -13,14 +13,13 @@
         {% block content %}
             <section class="section">
                 <div class="coming__soon text-center">
-                    <h1>Coming Soon</h1>
+                    <h1 class="section__title">Coming Soon</h1>
                     <p>Page is currently under construction</p>
                 </div>
             </section>
 
-            <div class="section">
-                {% include "tamueats/footer.html" %}
-            </div>
+            {% include "tamueats/aboutUs.html" %}
+            {% include "tamueats/footer.html" %}
         {% endblock %}
     </body>
 </html>

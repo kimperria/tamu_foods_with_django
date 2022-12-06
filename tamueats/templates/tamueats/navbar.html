@@ -1,7 +1,13 @@
 {% load static %}
-<nav class="navbar navbar-expand-lg navbar-light bg-light">
+<head>
+  {% block styles %}
+  <link rel="stylesheet" type="text/css" href="{% static '/css/base.css' %}">
+  {% endblock %}
+</head>
+
+<nav class="navbar navbar-expand-lg navigation-bar">
     <div class="container container-fluid">
-        <a class="navbar-brand" href="{% url 'HomePage'%}">Tamu Foods</a>
+        <a class="navbar-brand" href="{% url 'HomePage'%}"><span class="tamu-logo">Tamu <span class="foods-logo">Foods</span></span></a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
         </button>

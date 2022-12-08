@@ -35,6 +35,7 @@ SECRET_KEY = config('SECRET_KEY')
 ALLOWED_HOSTS = config('ALLOWED_HOSTS', cast=Csv())
 
 
+CSRF_TRUSTED_ORIGINS = ['https://tamufoods-by-kimperria.up.railway.app','https://*.127.0.0.1', 'http://localhost']
 # Application definition
 
 INSTALLED_APPS = [
@@ -99,9 +100,9 @@ if config("MODE") == 'dev':
     DATABASES = {
         'default': {
             'ENGINE': 'django.db.backends.postgresql',
-            'NAME': config('DB_NAME'),
-            'USER': config('DB_USER'),
-            'PASSWORD': config('DB_PASSWORD'),
+            'NAME': config('DEV_DB_NAME'),
+            'USER': config('DEV_DB_USER'),
+            'PASSWORD': config('DEV_DB_PASSWORD'),
         }
     }
 elif config('MODE') == 'prod':

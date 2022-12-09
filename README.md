@@ -141,14 +141,16 @@ They include, delivery company or individuals, suppliers, government, financial 
     - SECRET_KEY='django-secret-key' or 'you-will-never-guess'
     - MODE='dev'
     - DEBUG=True
-    - DB_NAME='blackpanther22'
-    - DB_USER='postgres user' or 'allowed psql user'
-    - DB_PASSWORD='you-will-never-guess' or Null
-    - DB_HOST=provide for all or default
+    - DEV_DB_NAME='blackpanther22'
+    - DEV_DB_USER='postgres user' or 'allowed psql user'
+    - DEV_DB_PASSWORD='you-will-never-guess' or Null
+    - DEV_DB_HOST=provide default
     - ALLOWED_HOSTS=provide for localhost
     - CLOUDINARY_CLOUD_NAME='your cloudinary username'
     - CLOUDINARY_API_KEY='your cloudinary api'
     - CLOUDINARY_API_SECRET='your cloudinary secret key'
+    - CSRF_TRUSTED_ORIGINS =[ALLOWED_HOSTS]
+    - DISABLE_COLLECTSTATIC=0
 
 ### Continue with setup
     - Make migrations and migrate configurations to new DB

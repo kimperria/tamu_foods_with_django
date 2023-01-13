@@ -113,6 +113,7 @@ They include, delivery company or individuals, suppliers, government, financial 
 ## Setup
 ### Dependacies
 - Python 3.6 +
+- JavaScript
 - PostgreSQL
 - IDE of choice.
 - More listed on requirements.txt

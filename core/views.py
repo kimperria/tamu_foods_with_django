@@ -41,13 +41,15 @@ def customer_profile(request):
     '''
 
     if request.method == 'POST':
-        user_information_form = UserUpdateForm(request.POST, request.FILES, instance=request.user)
+        user_information_form = UserUpdateForm(request.POST, request.FILES, instance=request.user.customer)
         current_user = request.user
         print(current_user)
         # customer = current_user.customer
         # print(current_user.customer.phone_number)
         customer_information_form = CustomerInformationForm(request.POST, instance=request.user.customer)
         if user_information_form.is_valid() and customer_information_form.is_valid:
+            print(f'Form: {user_information_form}')
+            print(f'Form: {customer_information_form}')
             user_information_form.save()
             customer_information_form.save()
             ## Messages

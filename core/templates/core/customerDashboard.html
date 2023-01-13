@@ -29,42 +29,73 @@
                         <div class="card-header">
                             Orders
                           </div>
-                        <div class="card-body">
-                            <ul class="list-group list-group-flush">
-                                <li class="list-group-item">
+                          {% if orders.count == 0 %}
+                            <div class="card">
+                                <h4 class="text-center">You no orders yet.</h4>
+                                <div class="card-body">
+                                    <p class="text-center">Click <a href="{% url 'MenuPage' %}">Menu</a> to view our catalogue.</p>
+                                </div>
+                            </div>
+                          {% elif orders.count > 0 %}
+                          <div class="card-body">
+                            <div class="row">
+                                <div class="col-md-6">
                                     <h4 class="table__name text-center">Pending Orders</h4>
-                                    <table class="customer__dashboard-table">
-                                        <tr class="table__name">
-                                            <th>Order ID</th>
-                                            <th>Date</th>
-                                            <th>Payment</th>
-                                            <th>Delivery</th>
-                                        </tr>
-                                        <tr class="text-center">
-                                            <td>1</td>
-                                            <td>Today</td>
-                                            <td>Pending</td>
-                                            <td>Pending</td>
-                                        </tr>
+
+                                    <table class="table customer__dashboard-table">
+                                        <thead>
+                                            <tr class="table__name">
+                                                <th scope="col">Order ID</th>
+                                                <th scope="col">Date</th>
+                                                <th scope="col">Payment</th>
+                                                <th scope="col">Delivery</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            {% for order in orders %}
+                                            {% if order.payment_status == "P" %}
+                                            <tr>
+                                                <td>{{ order.id }}</td>
+                                                <td>{{ order.placed_at }}</td>
+                                                <td>{{ order.payment_status}}</td>
+                                                <td>{{ order.delivery_status}}</td>
+                                            </tr>
+                                            {% endif %}
+                                            {% endfor %}
+                                        </tbody>
+
                                     </table>
-                                </li>
-                                <li class="list-group-item text-center">
+                                </div>
+
+                                <div class="col-md-6">
                                     <h4 class="table__name text-center">Completed Orders</h4>
-                                    <table class="customer__dashboard-table">
-                                        <tr class="table__name">
-                                            <th>Order ID</th>
-                                            <th>Date</th>
-                                            <th>Delivery</th>
-                                        </tr>
-                                        <tr>
-                                            <td>1</td>
-                                            <td>Today</td>
-                                            <td>Pending</td>
-                                        </tr>
+                                    <table class="table customer__dashboard-table">
+                                        <thead>
+                                            <tr class="table__name">
+                                                <th scope="col">Order ID</th>
+                                                <th scope="col">Date</th>
+                                                <th scope="col">Payment</th>
+                                                <th scope="col">Delivery</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            {% for order in orders %}
+                                            {% if order.payment_status == "C" %}
+                                            <tr>
+                                                <td>{{ order.id }}</td>
+                                                <td>{{ order.placed_at }}</td>
+                                                <td>{{ order.payment_status}}</td>
+                                                <td>{{ order.delivery_status}}</td>
+                                            </tr>
+                                            {% endif %}
+                                            {% endfor %}
+                                        </tbody>
                                     </table>
-                                </li>
-                            </ul>
+                                </div>
+                            </div>
                         </div>
+                          {% endif %}
+
                     </div>
                 </div>
             </div>

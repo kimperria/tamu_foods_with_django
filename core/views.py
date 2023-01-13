@@ -65,11 +65,14 @@ def customer_profile(request):
 
 @login_required()
 def customer_dashboard(request):
-    customer = request.user
-    print(customer)
-    message = f'Hello {customer}'
+    loggedIn_user = request.user
+    user = Customer.objects.get(user=loggedIn_user)
+
+    customer_order = FoodOrder.objects.filter(customer=user)
+
+    print(f' Here is cutomer order {customer_order}')
     context = {
-        'customer': customer,
+        'orders': customer_order
     }
     return render (request, 'core/customerDashboard.html', context)
 

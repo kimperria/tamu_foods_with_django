@@ -116,6 +116,13 @@ elif config('MODE') == 'prod':
             'PORT': config('DB_PORT')
         }
     }
+elif config('MODE') == 'lite':
+    DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': BASE_DIR / 'db.sqlite3',
+    }
+}
 else:
     DATABASES = {
         'default': dj_database_url.config(
